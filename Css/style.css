@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    max-width: 100%;
+}
+.header{
+    display: inline;
+}
+.Col-6F{
+    float: left;
+}
+.Col-6L{
+    float: right;
+    height: 150px;
+    width: 200px;
+    text-align: end;
+    padding: 20px;
+
+}
+i{
+    color: #41C9D1;
+}
+
+#setting{
+    padding: 20px;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+#time{
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 500;
+
+}
+#date{
+    color: white;
+    font-size: 21px;
+    line-height: 24px;
+    text-align: right;
+    font-weight: 400;
+}
+#temp{
+    color: #41C9D1;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 600;
+}
