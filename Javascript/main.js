@@ -59,18 +59,21 @@ function clock() {
 
 var interval = setInterval(clock, 1000);
 
-// const news = document.getElementById('news');
-
-fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-06-28&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
+fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-06-30&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
     .then(response => response.json())
     .then(data => {
-       for (let i = 0; i <8; i++) {
+       for (let i = 0; i <7; i++) {
         const element = data.articles[i];
         const pDate = document.createElement("h6");
         pDate.innerHTML = element.publishedAt;
-        const pNews = document.createElement("p")
+        const pNews = document.createElement("p");
         pNews.innerHTML = element.title;
+        console.log(element);
         document.getElementById('news').appendChild(pDate);
         document.getElementById('news').appendChild(pNews);
        }
     })
+
+// function HideNews(){
+//     document.getElementById('news').innerHTML = '';
+// }

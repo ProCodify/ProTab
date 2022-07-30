@@ -58,15 +58,46 @@ i{
 }
 .news{
     grid-column: span 3;
-    background: rgba(113, 130, 144, 0.4);
+    background: rgba(113, 130, 144, 0.692);
     padding: 12px;
-    margin: 100px 20px;
+    margin: 160px 20px;
     border-radius: 8px;
     /* overflow: hidden; */
     color: #fff;
-    height: 485px;
+    height: 480px;
     width: 277px;
     border-radius: [object Object]px;
+}
+.shortcut-icons{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: 150px;
+    margin-top: 10px;
+}
+
+#facebook{
+    grid-column: span 3;
+}
+#discord{
+    grid-column: span 3;
+}
+#telegram{
+    grid-column: span 3;
+}
+#linkedin{
+    grid-column: span 3;
+}
+#whatsapp{
+    grid-column: span 3;
+}
+#youtube{
+    grid-column: span 3;
+}
+#Yfile{
+    grid-column: span 3;
+}
+#Bfile{
+    grid-column: span 3;
 }
 .news h4{
     font-size: 18px;
@@ -84,7 +115,7 @@ i{
     letter-spacing: 0em;
 }
 .news p{
-    padding: 9px 0px;
+    padding: 8px 0px;
     font-style: Light;
     font-size: 14px;
     line-height: 18px;
@@ -93,11 +124,9 @@ i{
 }
 .shortcuts{
     grid-column: span 6;
-    height: 400px;
-    /* background-color: #718290d5; */
     padding: 30px;
     margin: 50px 20px;
-    border-radius: 8px;
+    text-align: center;
 }
 .todo-list{
     grid-column: span 3;
@@ -119,3 +148,69 @@ i{
 .nMore{
     text-align: center;
 }
+.shortcuts h1{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 47px;
+    /* letter-spacing: 1em; */
+    text-align: center;
+    color: #fff;
+    margin-right: 27px;
+
+}
+#googleSearch{
+    height: 44px;
+    width: 415px;
+    border-radius: 63px;
+    padding: 0px 10px;
+}
+.searchBox{
+    text-align: center;
+    margin-top: 20px;
+}
+#googleSearch::placeholder{
+    color:  rgba(188, 188, 188, 1);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+#SearchButton {
+    cursor: pointer;
+    position: relative;
+    right: 50px;
+    background-color: #41C9D1;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+}
+@media screen and (max-width: 1024px) {
+    #googleSearch{
+        height: 44px;
+        width: 295px;
+        border-radius: 63px;
+        padding: 0px 10px;
+    }
+    .shortcuts{
+        grid-column: span 6;
+        padding: 30px;
+        margin: 0px;
+        text-align: center;
+    }
+  }
+  @media screen and (max-width: 1206px) {
+    #googleSearch{
+        height: 44px;
+        width: 295px;
+        border-radius: 63px;
+        padding: 0px 10px;
+    }
+    .shortcuts{
+        grid-column: span 6;
+        padding: 30px;
+        margin: 0px;
+        text-align: center;
+    }
+  }
