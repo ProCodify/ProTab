@@ -58,14 +58,13 @@ function clock() {
 }
 
 var interval = setInterval(clock, 1000);
-
-fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-06-30&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
+fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-01&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
     .then(response => response.json())
     .then(data => {
        for (let i = 0; i <7; i++) {
         const element = data.articles[i];
         const pDate = document.createElement("h6");
-        pDate.innerHTML = element.publishedAt;
+        pDate.innerHTML = '05/07/2022';
         const pNews = document.createElement("p");
         pNews.innerHTML = element.title;
         console.log(element);
@@ -77,3 +76,4 @@ fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-06-30&sortBy=publishe
 // function HideNews(){
 //     document.getElementById('news').innerHTML = '';
 // }
+
