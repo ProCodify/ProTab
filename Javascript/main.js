@@ -73,6 +73,18 @@ fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-02&sortBy=publishe
        }
     })
 
+document.getElementById('addTaskBtn').addEventListener('click', () => {
+    document.getElementById('taskFild').style.display = 'block';
+    document.getElementById('addTaskBtn').style.display = 'none';
+})
+document.getElementById('SubTask').addEventListener('click', () => {
+    document.getElementById('taskFild').style.display = 'none';
+    document.getElementById('addTaskBtn').style.display = 'block';
+    const taskValue = document.getElementById('taskValue')
+    console.log(taskValue);
+})
+
+
 // function HideNews(){
 //     document.getElementById('news').innerHTML = '';
 // }

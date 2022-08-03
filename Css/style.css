@@ -100,10 +100,12 @@ i{
 }
 .todo-list{
     grid-column: span 3;
-    height: 400px;
-    /* background-color: #718290d5; */
-    padding: 30px;
-    margin: 60px 20px;
+    margin : 145px 20px 20px 20px;
+}
+.todo{
+    height: 174px;
+    /* width: 311px; */
+    background: rgba(113, 130, 144, 0.692);
     border-radius: 8px;
 }
 .nMore button{
@@ -169,6 +171,46 @@ i{
 .fUpdate{
     display: none;
 }
+.todo{
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    color: #fff;
+}
+#addTaskBtn{
+    margin-top: 10px;
+    height: 28px;
+    width: 100%;
+    border-radius: 7px;
+    background: rgba(113, 130, 144, 0.774);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 580;
+    line-height: 27px;
+    text-align: center;
+    color: #fff;
+}
+#taskValue{
+    height: 28px;
+    margin-top: 10px;
+    width: 81%;
+    border-radius: 7px;
+    border: none;
+    padding: 2px 0px 2px 3px;
+}
+.Rsub{
+    background-color: #41C9D1;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+}
+#taskFild{
+    display: none;
+    width: 100%;
+}
 @media screen and (max-width: 1024px) {
     #googleSearch{
         height: 44px;
@@ -181,6 +223,14 @@ i{
         padding: 30px;
         margin: 0px;
         text-align: center;
+    }
+    #taskValue{
+        height: 28px;
+        margin-top: 10px;
+        width: 76%;
+        border-radius: 7px;
+        border: none;
+        padding: 2px 0px 2px 3px;
     }
   }
   @media screen and (max-width: 1206px) {
@@ -195,6 +245,14 @@ i{
         padding: 30px;
         margin: 0px;
         text-align: center;
+    }
+    #taskValue{
+        height: 28px;
+        margin-top: 10px;
+        width: 74%;
+        border-radius: 7px;
+        border: none;
+        padding: 2px 0px 2px 3px;
     }
 }
 
@@ -213,3 +271,4 @@ i{
     }
    
 }
+
