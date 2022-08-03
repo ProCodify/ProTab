@@ -1,156 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/Img/Logo.png" type="image/x-icon" />
-    <title>ProTab</title>
-    <!-- Fontawesome CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="/Css/style.css" />
-  </head>
-  <body>
-    <div class="home">
-      <div class="header">
-        <div class="Col-6F">
-          <i id="setting" class="fa-solid fa-gear"></i>
-          <i style="font-size: 20px" id="wifi" class="fa-solid fa-wifi"></i>
-          <span
-            style="
-              font-weight: 500;
-              font-size: 18px;
-              line-height: 27px;
-              color: #20b038;
-              margin-right: 12px;
-            "
-            >25ms</span
-          >
-          <i class="fa-regular fa-clock"></i>
-          <span
-            style="
-              font-weight: 500;
-              font-size: 18px;
-              line-height: 27px;
-              color: #ffdd2d;
-            "
-            >1h 26m</span
-          >
-        </div>
-        <div class="Col-6L">
-          <img src="/Img/sunny.png" alt="" />
-          <h5 id="temp">35°C</h5>
-          <p id="date">14/03/2022</p>
-          <div id="clock">
-            <div id="time">
-              <span id="hours">00</span>
-              <span>:</span>
-              <span id="minutes">00</span>
-              <span>:</span>
-              <span id="seconds"></span>
-              <!-- <span id="phase">AM</span>  -->
-            </div>
-          </div>
-        </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/Img/Logo.png" type="image/x-icon">
+  <title>ProTab</title>
+  <!-- Fontawesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/Css/style.css">
+</head>
+
+<body>
+  <div class="home">
+    <div class="header">
+      <div class="Col-6F">
+        <i id="setting" class="fa-solid fa-gear"></i>
+        <i style="font-size: 20px" id="wifi" class="fa-solid fa-wifi"></i>
+        <span style="font-weight: 500;font-size: 18px;line-height: 27px;color: #20B038;margin-right: 12px;">25ms</span>
+        <i class="fa-regular fa-clock"></i>
+        <span style="font-weight: 500;font-size: 18px;line-height: 27px;color: #FFDD2D;">1h 26m</span>
       </div>
-      <div class="container">
-        <div class="news">
-          <h4>Recent News</h4>
-          <div id="news"></div>
-          <div class="nMore">
-            <button onclick="HideNews()">
-              <img src="/Img/Vector.png" alt="" />
-            </button>
+      <div class="Col-6L">
+        <img src="/Img/sunny.png" alt="">
+        <h5 id="temp">35°C</h5>
+        <p id="date">14/03/2022</p>
+        <div id="clock">
+          <div id="time">
+            <span id="hours">00</span>
+            <span>:</span>
+            <span id="minutes">00</span>
+            <span>:</span>
+            <span id="seconds"></span>
+            <!-- <span id="phase">AM</span>  -->
           </div>
         </div>
-        <div class="shortcuts">
-          <h1>How’s Your Day Going?</h1>
-          <div class="searchBox">
-            <input
-              class="input-field"
-              id="googleSearch"
-              type="text"
-              placeholder="Google"
-            />
-            <button id="SearchButton">
-              <i style="color: #fff" class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <div class="shortcut-icons">
-              <div class="R1st">
-                <a target="_blank" href="facebook.com"
-                  ><img
-                    src="/Img/shortcut-icons/Facebook.png"
-                    class="icon"
-                    id="facebook"
-                    alt=""
-                /></a>
-                <a target="_blank" href="discord.com"
-                  ><img
-                    src="/Img/shortcut-icons/Discord.png"
-                    class="icon"
-                    id="discord"
-                    alt=""
-                /></a>
-                <a target="_blank" href="telegram.com"
-                  ><img
-                    src="/Img/shortcut-icons/Telegram.png"
-                    class="icon"
-                    id="telegram"
-                    alt=""
-                /></a>
-                <a target="_blank" href="linkedin.com"
-                  ><img
-                    src="/Img/shortcut-icons/LinkedIn.png"
-                    class="icon"
-                    id="linkedin"
-                    alt=""
-                /></a>
-              </div>
-              <div class="R2nd">
-                <a target="_blank" href="whatsapp.com"
-                  ><img
-                    src="/Img/shortcut-icons/WhatsApp.png"
-                    class="icon"
-                    id="whatsapp"
-                    alt=""
-                /></a>
-                <a target="_blank" href="youtube.com"
-                  ><img
-                    src="/Img/shortcut-icons/YouTube.png"
-                    class="icon"
-                    id="youtube"
-                    alt=""
-                /></a>
-                <a target="_blank" href=""
-                  ><img
-                    style="margin-bottom: 5px"
-                    src="/Img/shortcut-icons/fileY.png"
-                    class="icon"
-                    id="Yfile"
-                    alt=""
-                /></a>
-                <a target="_blank" href=""
-                  ><img
-                    style="margin-bottom: 5px"
-                    src="/Img/shortcut-icons/fileB.png"
-                    class="icon"
-                    id="Bfile"
-                    alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="todo-list"></div>
       </div>
     </div>
+    <div class="container">
+      <div class="news">
+        <h4>Recent News</h4>
+        <div id="news"></div>
+        <div class="nMore">
+          <button onclick="HideNews()">
+            <img src="/Img/Vector.png" alt="">
+          </button>
+        </div>
 
-    <script src="/Javascript/main.js"></script>
-  </body>
+      </div>
+      <div class="shortcuts">
+        <h1>How’s Your Day Going?</h1>
+        <div class="searchBox">
+          <form action="https://www.google.com/search" method="get" target="_blank">
+            <input class="input-field" id="googleSearch" type="text" name="q" placeholder="Google">
+            <button id="SearchButton" type="submit">
+              <i style="color: #fff" class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+          <div class="shortcut-icons">
+            <div class="R1st">
+              <a target="_blank" href="https://www.facebook.com/"><img src="/Img/shortcut-icons/Facebook.png"
+                  class='icon' id="facebook" alt=""></a>
+              <a target="_blank" href="https://discord.com/"><img src="/Img/shortcut-icons/Discord.png" class='icon'
+                  id="discord" alt=""></a>
+              <a target="_blank" href="https://telegram.com"><img src="/Img/shortcut-icons/Telegram.png" class='icon'
+                  id="telegram" alt=""></a>
+              <a target="_blank" href="https://linkedin.com"><img src="/Img/shortcut-icons/LinkedIn.png" class='icon'
+                  id="linkedin" alt=""></a>
+            </div>
+            <div class="R2nd">
+              <a target="_blank" href="https://whatsapp.com"><img src="/Img/shortcut-icons/WhatsApp.png" class='icon'
+                  id="whatsapp" alt=""></a>
+              <a target="_blank" href="https://youtube.com"><img src="/Img/shortcut-icons/YouTube.png" class='icon'
+                  id="youtube" alt=""></a>
+              <a target="_blank" href=""><img style="margin-bottom: 5px;" src="/Img/shortcut-icons/fileY.png"
+                  class='icon' id="Yfile" alt=""></a>
+              <a target="_blank" href=""><img style="margin-bottom: 5px;" src="/Img/shortcut-icons/fileB.png"
+                  class='icon' id="Bfile" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="todo-list"></div>
+    </div>
+  </div>
+  <div class="fUpdate">
+    <h2>We will support mobile devices in the near future</h2>
+  </div>
+  <script src="/Javascript/main.js"></script>
+</body>
+
 </html>

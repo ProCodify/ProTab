@@ -133,6 +133,7 @@ i{
     width: 415px;
     border-radius: 63px;
     padding: 0px 10px;
+    border: none;
 }
 .searchBox{
     text-align: center;
@@ -157,13 +158,16 @@ i{
     border: none;
 }
 .shortcut-icons{
-    margin: 20px;
+    margin: 20px 35px 0px 0px;
 }
 /* .R1st,.R2nd{
     margin: 20px;
 } */
 .icon{
-    padding: 10px;
+    padding: 14px;
+}
+.fUpdate{
+    display: none;
 }
 @media screen and (max-width: 1024px) {
     #googleSearch{
@@ -198,4 +202,14 @@ i{
     .home{
         display: none;
     }
+    .fUpdate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #fff;
+        /* width: 100vw; */
+        text-align: center;
+    }
+   
 }

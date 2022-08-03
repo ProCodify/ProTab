@@ -1,32 +1,32 @@
 var today = new Date();
 var time = today.getHours();
 let wish = "";
-// if(time>=21 && time>= 18){
-//     document.body.style.backgroundImage = "url('/Img/bg/8.jpeg')";
-// }
-// else if(time>= 19 && time<=21){
-//     document.body.style.backgroundImage = "url('/Img/bg/7.jpeg')";
+if(time>=21 && time>= 18){
+    document.body.style.backgroundImage = "url('/Img/bg/8.jpeg')";
+}
+else if(time>= 19 && time<=21){
+    document.body.style.backgroundImage = "url('/Img/bg/7.jpeg')";
 
-// }
-// else if(time>= 18 && time<=19){
-//     document.body.style.backgroundImage = "url('/Img/bg/6.jpeg')";
-// }
-// else if(time>= 15 && time<=18){
-//     document.body.style.backgroundImage = "url('/Img/bg/5.jpeg')";
-// }
-// else if(time>= 12 && time<=15){
-//     document.body.style.backgroundImage = "url('/Img/bg/4.jpeg')";
-// }
-// else if(time>= 8 && time<=12){
-//     document.body.style.backgroundImage = "url('/Img/bg/3.jpeg')";
-// }
-// else if(time>= 5 && time<=8){
-//     document.body.style.backgroundImage = "url('/Img/bg/2.jpeg')";
-// }
-// else if(time>= 0 && time<=5){
-//     document.body.style.backgroundImage = "url('/Img/bg/1.jpeg')";
-// }
-document.body.style.backgroundImage = "url('/Img/bg/8.jpeg')"
+}
+else if(time>= 18 && time<=19){
+    document.body.style.backgroundImage = "url('/Img/bg/6.jpeg')";
+}
+else if(time>= 15 && time<=18){
+    document.body.style.backgroundImage = "url('/Img/bg/5.jpeg')";
+}
+else if(time>= 12 && time<=15){
+    document.body.style.backgroundImage = "url('/Img/bg/4.jpeg')";
+}
+else if(time>= 8 && time<=12){
+    document.body.style.backgroundImage = "url('/Img/bg/3.jpeg')";
+}
+else if(time>= 5 && time<=8){
+    document.body.style.backgroundImage = "url('/Img/bg/2.jpeg')";
+}
+else if(time>= 0 && time<=5){
+    document.body.style.backgroundImage = "url('/Img/bg/1.jpeg')";
+}
+// document.body.style.backgroundImage = "url('/Img/bg/8.jpeg')"
 
 
 
@@ -58,7 +58,7 @@ function clock() {
 }
 
 var interval = setInterval(clock, 1000);
-fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-01&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
+fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-02&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
     .then(response => response.json())
     .then(data => {
        for (let i = 0; i <7; i++) {
@@ -76,4 +76,3 @@ fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-01&sortBy=publishe
 // function HideNews(){
 //     document.getElementById('news').innerHTML = '';
 // }
-
