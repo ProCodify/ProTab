@@ -58,7 +58,7 @@ function clock() {
 }
 
 var interval = setInterval(clock, 1000);
-fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-02&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
+fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-07&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d')
     .then(response => response.json())
     .then(data => {
        for (let i = 0; i <7; i++) {
@@ -76,15 +76,30 @@ fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-07-02&sortBy=publishe
 document.getElementById('addTaskBtn').addEventListener('click', () => {
     document.getElementById('taskFild').style.display = 'block';
     document.getElementById('addTaskBtn').style.display = 'none';
+    document.getElementById('taskValue').value = '';
 })
+let todo = [];
 document.getElementById('SubTask').addEventListener('click', () => {
     document.getElementById('taskFild').style.display = 'none';
     document.getElementById('addTaskBtn').style.display = 'block';
-    const taskValue = document.getElementById('taskValue')
-    console.log(taskValue);
+    const taskValue = document.getElementById('taskValue').value;
+    const Stask = {taskValue: taskValue, activity: false};
+    addTask(Stask)
 })
+; 
+function addTask(task) {
+    todo.push(task);
+    console.log(todo);
+    localStorage.setItem("todos", JSON.stringify(todo));
+}
 
-
+const tasks = JSON.parse(localStorage.getItem("todos"));;
+tasks.map(task => {
+    const tList = document.createElement('p');
+    tList.id = 'TodoList';
+    tList.innerHTML = task.taskValue;
+    document.getElementById('taskItem').appendChild(tList);
+} );
 // function HideNews(){
 //     document.getElementById('news').innerHTML = '';
 // }
