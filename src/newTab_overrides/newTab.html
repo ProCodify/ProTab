@@ -1,28 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/Img/Icons/Logo.png" type="image/x-icon">
-  <title>ProTab</title>
-  <!-- Fontawesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/Css/style.css">
-</head>
-
-<body>
-  <div class="home">
-    <div class="header">
-      <div class="Col-6F">
-        <i id="setting" class="fa-solid fa-gear"></i>
-        <i style="font-size: 20px" id="wifi" class="fa-solid fa-wifi"></i>
-        <span style="font-weight: 500;font-size: 18px;line-height: 27px;color: #20B038;margin-right: 12px;">25ms</span>
-        <i class="fa-regular fa-clock"></i>
-        <span style="font-weight: 500;font-size: 18px;line-height: 27px;color: #FFDD2D;">1h 26m</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/Img/Logo.png" type="image/x-icon" />
+    <title>ProTab</title>
+    <!-- Fontawesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <div class="home">
+      <div class="header">
+        <div class="Col-6F">
+          <i id="setting" class="fa-solid fa-gear"></i>
+          <i style="font-size: 20px" id="wifi" class="fa-solid fa-wifi"></i>
+          <span
+            style="
+              font-weight: 500;
+              font-size: 18px;
+              line-height: 27px;
+              color: #20b038;
+              margin-right: 12px;
+            "
+            >25ms</span
+          >
+          <i class="fa-regular fa-clock"></i>
+          <span
+            style="
+              font-weight: 500;
+              font-size: 18px;
+              line-height: 27px;
+              color: #ffdd2d;
+            "
+            >1h 26m</span
+          >
+        </div>
+        <div class="Col-6L">
+          <img src="/Img/sunny.png" alt="" />
+          <h5 id="temp">35°C</h5>
+          <p id="date">14/03/2022</p>
+          <div id="clock">
+            <div id="time">
+              <span id="hours">00</span>
+              <span>:</span>
+              <span id="minutes">00</span>
+              <span>:</span>
+              <span id="seconds"></span>
+              <!-- <span id="phase">AM</span>  -->
+            </div>
+          </div>
+        </div>
       </div>
       <div class="Col-6L">
         <img src="/Img/Icons/sunny.png" alt="">
@@ -107,4 +144,6 @@
   <script src="/Javascript/main.js"></script>
 </body>
 
+</html>
+  </body>
 </html>
