@@ -1,35 +1,30 @@
 // Dynamic Background
 const getImage = (path) => {
-  return chrome.runtime.getUrl(path);
+  return chrome.runtime.getURL(path);
 };
 
 const calculateTime = () => {
-  const today = new Date();
-  const time = today.getHours();
-  console.log(today);
+  const currentDate = new Date();
+  const hour = currentDate.getHours();
+  let time = "";
+  switch (hour) {
+    case hour >= 6 && hour <= 12:
+      time = "morning";
+      break;
+    case hour >= 13 && hour <= 18:
+      time = "noon";
+      break;
+    // todo: check night time =>  condition
+    default:
+      time = "night";
+      break;
+  }
+  return time;
 };
 
-calculateTime();
-let wish = "";
-if (time >= 21 && time >= 18) {
-  document.body.style.backgroundImage = "url('/Img/bg/8.jpeg')";
-} else if (time >= 19 && time <= 21) {
-  document.body.style.backgroundImage = "url('/Img/bg/7.jpeg')";
-} else if (time >= 18 && time <= 19) {
-  document.body.style.backgroundImage = "url('/Img/bg/6.jpeg')";
-} else if (time >= 15 && time <= 18) {
-  document.body.style.backgroundImage = "url('/Img/bg/5.jpeg')";
-} else if (time >= 12 && time <= 15) {
-  document.body.style.backgroundImage = "url('/Img/bg/4.jpeg')";
-} else if (time >= 8 && time <= 12) {
-  document.body.style.backgroundImage = "url('/Img/bg/3.jpeg')";
-} else if (time >= 5 && time <= 8) {
-  document.body.style.backgroundImage = "url('/Img/bg/2.jpeg')";
-} else if (time >= 0 && time <= 5) {
-  document.body.style.backgroundImage = "url('/Img/bg/1.jpeg')";
-}
-// document.body.style.backgroundImage = "url('/Img/bg/8.jpeg')"
-
+const backgroundImage = getImage(`./assets/background/${calculateTime()}.jpg`);
+document.body.style.backgroundImage = `url(${backgroundImage})`;
+/*
 function clock() {
   var hours = document.getElementById("hours");
   var minutes = document.getElementById("minutes");
@@ -103,3 +98,5 @@ tasks.map((task) => {
 // function HideNews(){
 //     document.getElementById('news').innerHTML = '';
 // }
+
+*/
