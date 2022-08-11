@@ -3,7 +3,7 @@ const getImage = (path) => {
   return chrome.runtime.getURL(path);
 };
 
-const calculateTime = () => {
+const getTimeStatus = () => {
   const currentDate = new Date();
   const hour = currentDate.getHours();
   let time = "";
@@ -22,8 +22,19 @@ const calculateTime = () => {
   return time;
 };
 
-const backgroundImage = getImage(`./assets/background/${calculateTime()}.jpg`);
-document.body.style.backgroundImage = `url(${backgroundImage})`;
+const changeBackground = (weather) => {
+  let backgroundImageUrl = "";
+  const timeStatus = getTimeStatus();
+  if (!weather) {
+    backgroundImageUrl = getImage(`assets/background/${timeStatus}.jpg`);
+  } else {
+    backgroundImageUrl = getImage(
+      `assets/background/${timeStatus}-${weather}.jpg`
+    );
+  }
+  document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
+};
+changeBackground();
 /*
 function clock() {
   var hours = document.getElementById("hours");
@@ -51,23 +62,9 @@ function clock() {
   // phase.innerHTML = am;
 }
 
+// Weather Update
 var interval = setInterval(clock, 1000);
-fetch(
-  "https://newsapi.org/v2/everything?q=tesla&from=2022-07-07&sortBy=publishedAt&apiKey=af79ededa3ae4378ab7c59b4322ea73d"
-)
-  .then((response) => response.json())
-  .then((data) => {
-    for (let i = 0; i < 7; i++) {
-      const element = data.articles[i];
-      const pDate = document.createElement("h6");
-      pDate.innerHTML = "05/07/2022";
-      const pNews = document.createElement("p");
-      pNews.innerHTML = element.title;
-      console.log(element);
-      document.getElementById("news").appendChild(pDate);
-      document.getElementById("news").appendChild(pNews);
-    }
-  });
+
 
 document.getElementById("addTaskBtn").addEventListener("click", () => {
   document.getElementById("taskFild").style.display = "block";
