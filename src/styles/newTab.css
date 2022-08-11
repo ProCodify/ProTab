@@ -4,8 +4,10 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  max-width: 100%;
-  background-image: url("/Img/bg/4.jpeg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
 }
 .header {
   display: inline-block;

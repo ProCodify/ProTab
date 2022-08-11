@@ -4,16 +4,6 @@
   "manifest_version": 3,
   "permissions": [],
   "chrome_url_overrides": {
-    "newtab": "./newTab_overrides/newTab.html"
-  },
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "img/background/*.jpeg",
-        "img/icons/*.png",
-        "img/shortcut-icons/*.png"
-      ],
-      "matches": ["<all_urls>"]
-    }
-  ]
+    "newtab": "/public/newTab.html"
+  }
 }
