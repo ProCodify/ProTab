@@ -35,6 +35,62 @@ const changeBackground = (weather) => {
   document.body.style.backgroundImage = `url(${backgroundImageUrl})`;
 };
 changeBackground();
+
+// Update weather
+const getWeatherIcon = (condition) => {
+  if (!condition) return null;
+  const text = condition.toLowerCase();
+  // Todo: convert this logic into switch statement
+  if (text === "sunny" || text === "clear") return "clear";
+  else if (
+    text.includes("cloudy") ||
+    text.includes("mist") ||
+    text.includes("overcast")
+  )
+    return "cloudy";
+  else if (text.includes("rain")) return "rain";
+  else {
+    console.log(`Unknown weather condition ${text}`);
+  }
+};
+
+const getWeatherStatus = async (query = "dhaka") => {
+  const weatherStatus = {
+    icon: getTimeStatus(),
+    temp: "--",
+  };
+  try {
+    const response = await fetch(
+      `http://api.weatherapi.com/v1/current.json?key=85675a08620f44ae99833023221208&q=${query}`
+    );
+    const data = await response.json();
+    if (!data) return weatherStatus;
+    const {
+      current: {
+        temp_c,
+        condition: { text: condition },
+      },
+    } = data;
+
+    weatherStatus.temp = temp_c;
+    weatherStatus.icon = getWeatherIcon(condition);
+    return weatherStatus;
+  } catch (error) {
+    console.log(error);
+    return weatherStatus;
+  }
+};
+const updateWeatherCondition = async () => {
+  const condition = await getWeatherStatus();
+  const weatherIconPath = getImage(
+    `assets/icons/weather/${condition.icon}.png`
+  );
+  const weatherIconElement = document.getElementById("weather-icon");
+  const weatherTempElement = document.getElementById("weather-temp");
+  weatherIconElement.src = weatherIconPath;
+  weatherTempElement.innerText = `${condition.temp}°C`;
+};
+updateWeatherCondition();
 /*
 function clock() {
   var hours = document.getElementById("hours");
