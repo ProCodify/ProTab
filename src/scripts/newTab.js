@@ -7,17 +7,13 @@ const getTimeStatus = () => {
   const currentDate = new Date();
   const hour = currentDate.getHours();
   let time = "";
-  switch (hour) {
-    case hour >= 6 && hour <= 12:
-      time = "morning";
-      break;
-    case hour >= 13 && hour <= 18:
-      time = "noon";
-      break;
-    // todo: check night time =>  condition
-    default:
-      time = "night";
-      break;
+
+  if (hour >= 6 && hour <= 12) {
+    time = "morning";
+  } else if (hour >= 13 && hour <= 18) {
+    time = "noon";
+  } else if (hour >= 19 || hour <= 5) {
+    time = "night";
   }
   return time;
 };
