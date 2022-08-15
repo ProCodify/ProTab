@@ -2,6 +2,11 @@
   "name": "ProTab",
   "version": "0.1.0",
   "manifest_version": 3,
+  "icons": {
+    "16": "assets/brand/icon.png",
+    "48": "assets/brand/icon.png",
+    "128": "assets/brand/icon.png"
+  },
   "permissions": [],
   "chrome_url_overrides": {
     "newtab": "/public/newTab.html"
