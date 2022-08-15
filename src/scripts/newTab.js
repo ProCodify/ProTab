@@ -10,9 +10,14 @@ const getTimeStatus = () => {
 
   if (hour >= 6 && hour <= 12) {
     time = "morning";
-  } else if (hour >= 13 && hour <= 18) {
-    time = "noon";
-  } else if (hour >= 19 || hour <= 5) {
+  } 
+  else if (hour >= 13 && hour <= 18) {
+    time = "afternoon";
+  } 
+  else if (hour >= 19 && hour <= 20) {
+    time = "evening";
+  } 
+  else if (hour >= 20 || hour <= 5) {
     time = "night";
   }
   return time;
