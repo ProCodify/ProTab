@@ -294,4 +294,21 @@ i {
     /* width: 100vw; */
     text-align: center;
   }
+  
+}
+
+@media screen and (max-width: 1240px) {
+  #time{
+    font-size: 25px;
+  }
+  #weather-icon {
+    height: 38px;
+  }
+  #weather-temp {
+    font-size: 15px;
+  }
+  #date {
+    font-size: 18px;
+  }
+  
 }
