@@ -14,7 +14,7 @@ const getTimeStatus = () => {
   else if (hour >= 13 && hour <= 18) {
     time = "afternoon";
   } 
-  else if (hour >= 19 && hour <= 20) {
+  else if (hour >= 18 && hour <= 19) {
     time = "evening";
   } 
   else if (hour >= 20 || hour <= 5) {
@@ -102,6 +102,29 @@ function updateDateTime() {
 }
 setInterval(updateDateTime, 1000);
 
+const news = document.getElementById('news');
+
+function loadNews(){
+  fetch('https://newsdata.io/api/1/news?apikey=pub_102900ccc55746daec3151d536691c88e271b&q=cryptocurrency')
+  .then(res => res.json())
+  .then(data => {
+    data.results.map(result => {
+      const nDate = document.createElement('p')
+      const tNews = document.createElement('h6');
+      nDate.innerHTML = result.pubDate.slice(0, 10);;
+      tNews.innerHTML = result.title;
+      news.appendChild(nDate)
+      news.appendChild(tNews)
+    });
+  })
+}
+
+loadNews()
+
+document.getElementById('nShort').addEventListener('click', () => {
+  document.getElementById('news').innerHTML = '';
+})
+
 /*
 
 document.getElementById("addTaskBtn").addEventListener("click", () => {
@@ -130,8 +153,6 @@ tasks.map((task) => {
   tList.innerHTML = task.taskValue;
   document.getElementById("taskItem").appendChild(tList);
 });
-// function HideNews(){
-//     document.getElementById('news').innerHTML = '';
-// }
+
 
 */

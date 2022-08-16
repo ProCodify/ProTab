@@ -75,9 +75,8 @@ i {
   padding: 12px;
   margin: 160px 20px;
   border-radius: 8px;
-  /* overflow: hidden; */
   color: #fff;
-  min-height: 100px;
+  height: fit-content;
   width: 277px;
   border-radius: [object Object]px;
 }
@@ -91,18 +90,16 @@ i {
   margin-bottom: 10px;
 }
 .news h6 {
-  font-family: Poppins;
   font-size: 10px;
   font-weight: 300;
   line-height: 11px;
   letter-spacing: 0em;
 }
 .news p {
-  padding: 8px 0px;
+  padding: 2px 0px;
   font-style: Light;
   font-size: 14px;
   line-height: 18px;
-  line-height: 100%;
   font-weight: 300;
 }
 .shortcuts {
