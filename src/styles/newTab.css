@@ -11,7 +11,7 @@ body {
   background-position: center center;
   background-size: cover;
   object-fit: cover;
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
 }
 .header {
   display: inline-block;
