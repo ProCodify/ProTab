@@ -9,7 +9,6 @@ body {
   background-image: url("../assets/background/offline.jpg");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
   object-fit: cover;
   /* backdrop-filter: blur(5px); */
 }
@@ -90,7 +89,7 @@ i {
   margin-bottom: 10px;
 }
 .news h6 {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300;
   line-height: 11px;
   letter-spacing: 0em;
@@ -98,7 +97,7 @@ i {
 .news p {
   padding: 2px 0px;
   font-style: Light;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 18px;
   font-weight: 300;
 }
