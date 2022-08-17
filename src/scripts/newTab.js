@@ -125,7 +125,6 @@ document.getElementById('nShort').addEventListener('click', () => {
   document.getElementById('news').innerHTML = '';
 })
 
-/*
 
 document.getElementById("addTaskBtn").addEventListener("click", () => {
   document.getElementById("taskFild").style.display = "block";
@@ -147,12 +146,18 @@ function addTask(task) {
 }
 
 const tasks = JSON.parse(localStorage.getItem("todos"));
+
+if(tasks.length) {
 tasks.map((task) => {
   const tList = document.createElement("p");
   tList.id = "TodoList";
   tList.innerHTML = task.taskValue;
   document.getElementById("taskItem").appendChild(tList);
 });
+}
+else{
+  console.log('No Task')
+}  
 
 
-*/
+
