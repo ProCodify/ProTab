@@ -91,18 +91,21 @@ i {
   text-align: left;
   margin-bottom: 10px;
 }
-.news h6 {
-  font-size: 12px;
+.news a {
+  font-size: 13px;
   font-weight: 300;
-  line-height: 11px;
+  line-height: 20px;
   letter-spacing: 0em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
 }
 .news p {
   padding: 2px 0px;
   font-style: Light;
   font-size: 12px;
   line-height: 18px;
-  font-weight: 300;
+  font-weight: 500;
 }
 .shortcuts {
   grid-column: span 6;

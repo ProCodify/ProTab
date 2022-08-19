@@ -108,14 +108,19 @@ function loadNews(){
   fetch('https://newsdata.io/api/1/news?apikey=pub_102900ccc55746daec3151d536691c88e271b&q=cryptocurrency')
   .then(res => res.json())
   .then(data => {
-    data.results.map(result => {
-      const nDate = document.createElement('p')
-      const tNews = document.createElement('h6');
-      nDate.innerHTML = result.pubDate.slice(0, 10);;
-      tNews.innerHTML = result.title;
-      news.appendChild(nDate)
-      news.appendChild(tNews)
-    });
+        console.log(data);
+        for (let i = 0; i < 6; i++) {
+          const result = data.results[i];
+          const nDate = document.createElement('p')
+          var tNews = document.createElement('a');
+          tNews.setAttribute('href',`${result.link}`);
+          tNews.setAttribute("target", "_blank");
+          tNews.innerText = "link text";
+          nDate.innerHTML = result.pubDate.slice(0, 10);;
+          tNews.innerHTML = result.title;
+          news.appendChild(nDate)
+          news.appendChild(tNews)
+        }
   })
 }
 
