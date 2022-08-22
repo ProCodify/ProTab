@@ -102,7 +102,8 @@ function updateDateTime() {
 }
 setInterval(updateDateTime, 1000);
 
-const news = document.getElementById('news');
+const news = document.createElement('div');
+const News = document.getElementById('news');
 
 function loadNews(){
   fetch('https://newsdata.io/api/1/news?apikey=pub_102900ccc55746daec3151d536691c88e271b&q=cryptocurrency')
@@ -120,6 +121,8 @@ function loadNews(){
           tNews.innerHTML = result.title;
           news.appendChild(nDate)
           news.appendChild(tNews)
+          news.className= 'animate__animated animate__lightSpeedInRight';
+          News.appendChild(news);
         }
   })
 }

@@ -100,6 +100,9 @@ i {
   text-decoration: none;
   cursor: pointer;
 }
+.news a:hover{
+  text-decoration: underline;
+}
 .news p {
   padding: 2px 0px;
   font-style: Light;
