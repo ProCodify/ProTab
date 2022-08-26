@@ -8,6 +8,7 @@
     "48": "assets/brand/icon.png",
     "128": "assets/brand/icon.png"
   },
+
   "permissions": [],
   "chrome_url_overrides": {
     "newtab": "/public/newTab.html"

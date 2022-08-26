@@ -13,7 +13,7 @@ body {
   background-size: cover;
   height: 100vh;
   /* width: 100vw; */
-  /* backdrop-filter: blur(5px); */
+  /* backdrop-filter: blur(2px); */
 }
 .header {
   display: inline-block;
@@ -49,7 +49,7 @@ i {
 
 #time {
   color: rgb(255, 255, 255);
-  font-size: 30px;
+  font-size: 28px;
   line-height: 45px;
   font-weight: 500;
 }
@@ -100,7 +100,7 @@ i {
   text-decoration: none;
   cursor: pointer;
 }
-.news a:hover{
+.news a:hover {
   text-decoration: underline;
 }
 .news p {
@@ -299,11 +299,10 @@ i {
     /* width: 100vw; */
     text-align: center;
   }
-  
 }
 
 @media screen and (max-width: 1240px) {
-  #time{
+  #time {
     font-size: 25px;
   }
   #weather-icon {
@@ -315,5 +314,4 @@ i {
   #date {
     font-size: 18px;
   }
-  
 }
