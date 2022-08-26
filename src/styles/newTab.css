@@ -1,3 +1,7 @@
+:root {
+  --logo-color1: #e76f51;
+  --logo-color2: #2b2d42;
+}
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +18,24 @@ body {
   height: 100% !important;
   width: 100% !important;
   backdrop-filter: blur(2px);
+}
+.branding {
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+.branding img {
+  width: 50px;
+  border-radius: 50%;
+}
+.branding a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 18px;
+  text-decoration: none;
+}
+.branding a .name {
+  color: #fff;
 }
 .header {
   display: inline-block;
