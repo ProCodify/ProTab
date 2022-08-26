@@ -1,3 +1,4 @@
+import { getItem, saveItem } from "./utils/store.js";
 import { changeBackground } from "./utils/util.js";
 import getNews from "/scripts/API/news.js";
 import getWeatherStatus from "/scripts/API/weather.js";
@@ -8,6 +9,7 @@ const weatherTempElement = document.getElementById("weather-temp");
 const timeElement = document.getElementById("time");
 const dateElement = document.getElementById("date");
 const newsContainer = document.getElementById("news");
+let todoList = getItem("todoList") || [];
 // Helper functions
 const updateWeatherCondition = async (weatherCondition) => {
   const condition = weatherCondition || (await getWeatherStatus());
@@ -38,6 +40,16 @@ function updateNews(data, length = data.length) {
     newsContainer.appendChild(news);
   }
 }
+function addTodo(task) {
+  const todo = { task, isDone: false };
+  todoList.push(todo);
+  saveItem("todoList", todoList);
+  renderTodoList();
+}
+function renderTodoList() {
+  let todoList = getItem("todoList");
+  console.log("store", todoList);
+}
 // Starting point
 window.onload = async () => {
   const weatherStatus = await getWeatherStatus();
@@ -45,37 +57,5 @@ window.onload = async () => {
   changeBackground(weatherStatus.icon, document.body);
   updateWeatherCondition(weatherStatus);
   const news = await getNews();
-  updateNews(news, 4);
+  updateNews(news, 5);
 };
-
-// document.getElementById("addTaskBtn").addEventListener("click", () => {
-//   document.getElementById("taskFild").style.display = "block";
-//   document.getElementById("addTaskBtn").style.display = "none";
-//   document.getElementById("taskValue").value = "";
-// });
-// let todo = [];
-// document.getElementById("SubTask").addEventListener("click", () => {
-//   document.getElementById("taskFild").style.display = "none";
-//   document.getElementById("addTaskBtn").style.display = "block";
-//   const taskValue = document.getElementById("taskValue").value;
-//   const Stask = { taskValue: taskValue, activity: false };
-//   addTask(Stask);
-// });
-// function addTask(task) {
-//   todo.push(task);
-//   console.log(todo);
-//   localStorage.setItem("todos", JSON.stringify(todo));
-// }
-
-// const tasks = JSON.parse(localStorage.getItem("todos"));
-
-// if (tasks.length) {
-//   tasks.map((task) => {
-//     const tList = document.createElement("p");
-//     tList.id = "TodoList";
-//     tList.innerHTML = task.taskValue;
-//     document.getElementById("taskItem").appendChild(tList);
-//   });
-// } else {
-//   console.log("No Task");
-// }
