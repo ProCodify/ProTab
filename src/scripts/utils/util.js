@@ -33,7 +33,6 @@ export const getWeatherIcon = (condition) => {
   }
 };
 export const changeBackground = (weather, domElement) => {
-  console.log(weather, domElement);
   let backgroundImageUrl = "";
   const timeStatus = getTimeStatus();
   if (!weather) {
