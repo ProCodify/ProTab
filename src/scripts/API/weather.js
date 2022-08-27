@@ -21,6 +21,7 @@ export default async function getWeatherStatus(query = "dhaka") {
     weatherStatus.icon = getWeatherIcon(condition);
     return weatherStatus;
   } catch (error) {
+    weatherStatus.icon = "offline";
     console.log(error);
     return weatherStatus;
   }

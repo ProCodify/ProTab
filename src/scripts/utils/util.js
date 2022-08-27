@@ -30,6 +30,7 @@ export const getWeatherIcon = (condition) => {
   else if (text.includes("rain")) return "rain";
   else {
     console.log(`Unknown weather condition ${text}`);
+    return "offline";
   }
 };
 export const changeBackground = (weather, domElement) => {
@@ -37,6 +38,8 @@ export const changeBackground = (weather, domElement) => {
   const timeStatus = getTimeStatus();
   if (!weather) {
     backgroundImageUrl = getImage(`assets/background/${timeStatus}.jpg`);
+  } else if (weather === "offline") {
+    backgroundImageUrl = getImage(`assets/background/offline.jpg`);
   } else {
     backgroundImageUrl = getImage(
       `assets/background/${timeStatus}-${weather}.jpg`

@@ -28,6 +28,7 @@ function updateDateTime() {
 function updateNews(data, length = data.length) {
   for (let i = 0; i < length; i++) {
     const result = data[i];
+    if (!result) break;
     const news = document.createElement("div");
     const nDate = document.createElement("p");
     var tNews = document.createElement("a");
