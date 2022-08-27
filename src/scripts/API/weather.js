@@ -6,7 +6,7 @@ export default async function getWeatherStatus(query = "dhaka") {
   };
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=85675a08620f44ae99833023221208&q=${query}`
+      `http://api.weatherapi.com/v1/current.json?key=9e4938bb7dd54a07805155725221105&q=${query}`
     );
     const data = await response.json();
     if (!data) return weatherStatus;
