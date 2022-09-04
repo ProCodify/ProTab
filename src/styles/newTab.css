@@ -102,7 +102,7 @@ i {
   color: #fff;
   height: fit-content;
   width: 277px;
-  border-radius: [object Object]px;
+  border-radius: 7px;
 }
 
 .news h4 {
@@ -143,8 +143,6 @@ i {
   margin: 145px 20px 20px 20px;
 }
 .todo {
-  height: 174px;
-  /* width: 311px; */
   background: rgba(113, 130, 144, 0.692);
   border-radius: 8px;
 }
@@ -253,6 +251,37 @@ i {
   display: none;
   width: 100%;
   text-align: center;
+}
+#taskItem {
+  margin: 0.5rem 0;
+}
+.task {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task p {
+  font-weight: normal;
+  font-size: 1rem;
+  color: #fff;
+}
+.task button {
+  background: rgba(113, 130, 144, 0.774);
+  border: none;
+  outline: none;
+  padding: 0.3rem 0.3rem;
+  border-radius: 7px;
+}
+.task button:hover {
+  cursor: pointer;
+}
+.task button i {
+  font-size: 1rem;
+  background: none;
+  width: 16px;
+  height: 14px;
+  color: #fff;
 }
 @media screen and (max-width: 1024px) {
   #googleSearch {
