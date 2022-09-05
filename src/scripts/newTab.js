@@ -71,6 +71,12 @@ function addTodo(task) {
   saveItem("todoList", todoList);
   renderTodoList();
 }
+function deleteTodo(id) {
+  let todoList = getItem("todoList") || [];
+  todoList = todoList.filter((todo) => todo.id !== id);
+  saveItem("todoList", todoList);
+  renderTodoList();
+}
 function renderTodoList() {
   let todoList = getItem("todoList") || [];
   const todoContainer = document.getElementById("taskItem");
@@ -78,11 +84,14 @@ function renderTodoList() {
   todoList.forEach((todo) => {
     const d = document.createElement("div");
     d.className = "task";
-    d.innerHTML = `
-     <p>${todo.text}</p>
-        <button >
-          <i class="fa-regular fa-square-check"></i>            
-        </button> `;
+    const p = document.createElement("p");
+    const b = document.createElement("button");
+    p.innerText = todo.text;
+    b.innerHTML = `<i class="fa-regular fa-square-check"></i>`;
+    b.addEventListener("click", () => deleteTodo(todo.id));
+    d.appendChild(p);
+    d.appendChild(b);
+
     todoContainer.appendChild(d);
   });
 }
