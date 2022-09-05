@@ -1,3 +1,4 @@
+import generateId from "./lib/randomId.js";
 import { getItem, saveItem } from "./utils/store.js";
 import { changeBackground } from "./utils/util.js";
 import getNews from "/scripts/API/news.js";
@@ -9,7 +10,30 @@ const weatherTempElement = document.getElementById("weather-temp");
 const timeElement = document.getElementById("time");
 const dateElement = document.getElementById("date");
 const newsContainer = document.getElementById("news");
+
+const todoInputArea = document.getElementById("taskFild");
+const addTaskBtn = document.getElementById("addTaskBtn");
+
+const submitAddTaskBtn = document.getElementById("SubTask");
+// Global Variables
 let todoList = getItem("todoList") || [];
+
+// Event Handlers
+const handleAddTask = () => {
+  addTaskBtn.style.display = "none";
+  todoInputArea.style.display = "block";
+};
+
+const handleAddTodo = () => {
+  const todoFiled = document.getElementById("taskValue");
+  const todoValue = todoFiled.value;
+  if (!todoValue) return;
+  addTodo(todoValue);
+};
+// handling events
+submitAddTaskBtn.addEventListener("click", handleAddTodo);
+addTaskBtn.addEventListener("click", handleAddTask);
+
 // Helper functions
 const updateWeatherCondition = async (weatherCondition) => {
   const condition = weatherCondition || (await getWeatherStatus());
@@ -42,17 +66,29 @@ function updateNews(data, length = data.length) {
   }
 }
 function addTodo(task) {
-  const todo = { task, isDone: false };
+  const todo = { text: task, id: generateId() };
   todoList.push(todo);
   saveItem("todoList", todoList);
   renderTodoList();
 }
 function renderTodoList() {
   let todoList = getItem("todoList");
-  console.log("store", todoList);
+  const todoContainer = document.getElementById("taskItem");
+  todoContainer.innerHTML = null;
+  todoList.forEach((todo) => {
+    const d = document.createElement("div");
+    d.className = "task";
+    d.innerHTML = `
+     <p>${todo.text}</p>
+        <button >
+          <i class="fa-regular fa-square-check"></i>            
+        </button> `;
+    todoContainer.appendChild(d);
+  });
 }
 // Starting point
 window.onload = async () => {
+  renderTodoList();
   const weatherStatus = await getWeatherStatus();
   setInterval(updateDateTime, 1000);
   changeBackground(weatherStatus.icon, document.body);
