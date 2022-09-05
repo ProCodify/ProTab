@@ -72,7 +72,7 @@ function addTodo(task) {
   renderTodoList();
 }
 function renderTodoList() {
-  let todoList = getItem("todoList");
+  let todoList = getItem("todoList") || [];
   const todoContainer = document.getElementById("taskItem");
   todoContainer.innerHTML = null;
   todoList.forEach((todo) => {
