@@ -18,17 +18,9 @@ ProTab is a browser extension that helps you to stay focused on workflow and inc
 
 ## Key Features
 
-- **Stay healthy**   
-  Reminds you to take a break, drink water, and do a couple of exercises
-- **Stay more focused with workflows**   
-  Control which website to use on different workflow
-- **Latest Emails and News on new tabs**   
-- **Weather Update, Time, and Network Status**   
-- **Advance Search bar**   
-  search directly to StackOverflow, YouTube
-- **TODO**   
-- **Track usages time on the web**   
-  Weekly overview on how much time you are spent on a different website
+- **Latest News on new tabs**
+- **Weather Update, Time, and Network Status**
+- **TODO**
 - **Dynamic background**  
   The new tab background changes, depending on your local time and weather
 
@@ -47,8 +39,5 @@ Will be updated soon after a public release.
 
 ## Screenshots
 
-![](./Docs/Images/Minimized_Glass.png)
-![](./Docs/Images/Expanded_Glass.png)
-![](./Docs/Images/Health_Alert_Start_Glass.png)
-![](./Docs/Images/Health_Alert_Skip_Glass.png)
-![](./Docs/Images/Settings_Glass.png)
+![](./Docs/Images/Screenshot_1.png)
+![](./Docs/Images/Screenshot_2.png)
