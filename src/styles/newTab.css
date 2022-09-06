@@ -15,7 +15,6 @@ body {
   background-position: center center;
   object-fit: cover;
   background-size: cover;
-  height: 100vh !important;
   width: 100% !important;
   backdrop-filter: blur(2px);
 }

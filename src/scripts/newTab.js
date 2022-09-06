@@ -103,5 +103,5 @@ window.onload = async () => {
   changeBackground(weatherStatus.icon, document.body);
   updateWeatherCondition(weatherStatus);
   const news = await getNews();
-  updateNews(news, 5);
+  updateNews(news, 4);
 };
