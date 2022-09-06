@@ -6,11 +6,14 @@
 
 # Table of contents
 
-- [Overview](#overview)
-- [Features](#key-features)
-- [Installation](#installation)
-- [Quick Links](#quick-links)
-- [Screenshots](#screenshots)
+- [ProTab](#protab)
+- [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Key Features](#key-features)
+  - [Installation](#installation)
+  - [Our Team](#our-team)
+  - [Quick Links](#quick-links)
+  - [Screenshots](#screenshots)
 
 ## Overview
 
@@ -26,7 +29,13 @@ ProTab is a browser extension that helps you to stay focused on workflow and inc
 
 ## Installation
 
-Will be updated soon after a public release.
+1. Goto [releases](https://github.com/ProCodify/ProTab/releases)
+2. Select your version
+3. Download the zip version and unzip it
+4. Goto extension manage page [Brave](brave://extensions/) [chrome](chrome://extensions/)
+5. Turn on 'developer mode' from the top right corner
+6. Click on 'Load unpacked'
+7. Select the unzipped folder and click on 'select folder'
 
 ## Our Team
 
