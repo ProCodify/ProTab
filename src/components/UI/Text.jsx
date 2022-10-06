@@ -25,12 +25,14 @@ const Text = styled.h2`
   }};
   font-size: ${(props) => sizes[props.size] || '14px'};
   font-family: ${uiConfig.font_family}, sans-serif;
-  font-weight: ${(props) => fontWeight[props.size] || 'regular'};
+  font-weight: ${(props) =>
+    fontWeight[props.weight || props.size] || 'regular'};
   line-height: 14px;
 `;
 
 Text.propTypes = {
   mode: PropTypes.string,
   size: PropTypes.string,
+  weight: PropTypes.string,
 };
 export default Text;
