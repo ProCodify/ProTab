@@ -33119,10 +33119,13 @@ const fontWeight = {
   lg: 500,
   xlg: 900
 };
+const modes = {
+  light: '#000',
+  dark: '#fff',
+  theme: (_config_UI_config__WEBPACK_IMPORTED_MODULE_0___default().theme_color)
+};
 const Text = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].h2`
-  color: ${props => {
-  if (props.color) return props.color;else if (props.mode === 'light') return '#000';else return '#fff';
-}};
+  color: ${props => modes[props.mode] || '#000'};
   font-size: ${props => sizes[props.size] || '14px'};
   font-family: ${(_config_UI_config__WEBPACK_IMPORTED_MODULE_0___default().font_family)}, sans-serif;
   font-weight: ${props => fontWeight[props.weight || props.size] || 'regular'};
@@ -33146,6 +33149,7 @@ const _default = Text;
 
   reactHotLoader.register(sizes, "sizes", "F:\\Coding\\Projects\\ProTab\\src\\components\\UI\\Text.jsx");
   reactHotLoader.register(fontWeight, "fontWeight", "F:\\Coding\\Projects\\ProTab\\src\\components\\UI\\Text.jsx");
+  reactHotLoader.register(modes, "modes", "F:\\Coding\\Projects\\ProTab\\src\\components\\UI\\Text.jsx");
   reactHotLoader.register(Text, "Text", "F:\\Coding\\Projects\\ProTab\\src\\components\\UI\\Text.jsx");
   reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\components\\UI\\Text.jsx");
 })();
@@ -33216,9 +33220,11 @@ const DateTime = () => {
     setInterval(updateDateTime, 1000);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    size: "md"
+    size: "md",
+    mode: "dark"
   }, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    size: "lg"
+    size: "lg",
+    mode: "dark"
   }, time));
 };
 
@@ -33264,13 +33270,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _utils_importAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/importAll */ "./src/utils/importAll.js");
-/* harmony import */ var _config_UI_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/UI.config */ "./src/config/UI.config.js");
-/* harmony import */ var _config_UI_config__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config_UI_config__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/useFetch */ "./src/hooks/useFetch.js");
-/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/localStorage */ "./src/utils/localStorage.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _UI_ImageIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../UI/ImageIcon */ "./src/components/UI/ImageIcon.jsx");
-/* harmony import */ var _UI_Text__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../UI/Text */ "./src/components/UI/Text.jsx");
+/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/useFetch */ "./src/hooks/useFetch.js");
+/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/localStorage */ "./src/utils/localStorage.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _UI_ImageIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../UI/ImageIcon */ "./src/components/UI/ImageIcon.jsx");
+/* harmony import */ var _UI_Text__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../UI/Text */ "./src/components/UI/Text.jsx");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -33288,35 +33292,34 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
-
 const icons = (0,_utils_importAll__WEBPACK_IMPORTED_MODULE_1__["default"])(__webpack_require__("./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$"));
 
 const Weather = () => {
-  const initWeather = _utils_localStorage__WEBPACK_IMPORTED_MODULE_4__.getItem('weather');
+  const initWeather = _utils_localStorage__WEBPACK_IMPORTED_MODULE_3__.getItem('weather');
   const {
     data,
     error,
     loaded
-  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_3__["default"])('/weather', {
+  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__["default"])('/weather', {
     weather: initWeather
   });
   const weather = data?.weather || {};
 
   if (loaded) {
-    _utils_localStorage__WEBPACK_IMPORTED_MODULE_4__.setItem('weather', weather);
+    _utils_localStorage__WEBPACK_IMPORTED_MODULE_3__.setItem('weather', weather);
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    src: icons[weather?.condition || _utils_util__WEBPACK_IMPORTED_MODULE_5__["default"].getTimeStatus()],
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    src: icons[weather?.condition || _utils_util__WEBPACK_IMPORTED_MODULE_4__["default"].getTimeStatus()],
     size: "rg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_6__["default"], {
     size: "md",
-    color: (_config_UI_config__WEBPACK_IMPORTED_MODULE_2___default().theme_color),
+    mode: "theme",
     weight: "lg"
-  }, weather?.temp_c || 0, "\xB0C"));
+  }, weather?.temp_c || '--', "\xB0C"));
 };
 
-__signature__(Weather, "useFetch{{ data, error, loaded }}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_3__["default"]]);
+__signature__(Weather, "useFetch{{ data, error, loaded }}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__["default"]]);
 
 const _default = Weather;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
@@ -40562,7 +40565,7 @@ const toFiniteNumber = (value, defaultValue) => {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("422aca1233c7204445f9")
+/******/ 		__webpack_require__.h = () => ("38e26726bcb46561249b")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/harmony module decorator */

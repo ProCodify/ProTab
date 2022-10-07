@@ -28,8 +28,12 @@ const DateTime = () => {
   }, []);
   return (
     <div>
-      <Text size="md">{date}</Text>
-      <Text size="lg">{time}</Text>
+      <Text size="md" mode="dark">
+        {date}
+      </Text>
+      <Text size="lg" mode="dark">
+        {time}
+      </Text>
     </div>
   );
 };

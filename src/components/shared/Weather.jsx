@@ -1,7 +1,6 @@
 import React from 'react';
 import importAll from '../../utils/importAll';
 
-import UIConfig from '../../config/UI.config';
 import useFetch from '../../hooks/useFetch';
 import * as store from '../../utils/localStorage';
 import util from '../../utils/util';
@@ -13,7 +12,6 @@ const icons = importAll(
 
 const Weather = () => {
   const initWeather = store.getItem('weather');
-
   const { data, error, loaded } = useFetch('/weather', {
     weather: initWeather,
   });
@@ -27,8 +25,8 @@ const Weather = () => {
         src={icons[weather?.condition || util.getTimeStatus()]}
         size="rg"
       />
-      <Text size="md" color={UIConfig.theme_color} weight="lg">
-        {weather?.temp_c || 0}°C
+      <Text size="md" mode="theme" weight="lg">
+        {weather?.temp_c || '--'}°C
       </Text>
     </>
   );

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import uiConfig from '../../config/UI.config';
+import UIConfig from '../../config/UI.config';
 const sizes = {
   xsm: '10px',
   sm: '12px',
@@ -17,14 +17,16 @@ const fontWeight = {
   xlg: 900,
 };
 
+const modes = {
+  light: '#000',
+  dark: '#fff',
+  theme: UIConfig.theme_color,
+};
+
 const Text = styled.h2`
-  color: ${(props) => {
-    if (props.color) return props.color;
-    else if (props.mode === 'light') return '#000';
-    else return '#fff';
-  }};
+  color: ${(props) => modes[props.mode] || '#000'};
   font-size: ${(props) => sizes[props.size] || '14px'};
-  font-family: ${uiConfig.font_family}, sans-serif;
+  font-family: ${UIConfig.font_family}, sans-serif;
   font-weight: ${(props) =>
     fontWeight[props.weight || props.size] || 'regular'};
   line-height: 14px;
