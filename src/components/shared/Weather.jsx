@@ -1,6 +1,7 @@
 import React from 'react';
 import importAll from '../../utils/importAll';
 
+import * as store from '../../utils/localStorage';
 import ImageIcon from '../UI/ImageIcon';
 import Text from '../UI/Text';
 
@@ -11,12 +12,22 @@ const icons = importAll(
 );
 
 const Weather = () => {
-  const { data, error } = useFetch('/weather');
+  const initWeather = store.getItem('weather');
+
+  const { data, error, loaded } = useFetch('/weather', {
+    weather: initWeather,
+  });
+  const weather = data.weather || {};
+
+  if (loaded) {
+    store.setItem('weather', weather);
+  }
+  console.log({ data, error, loaded });
   return (
     <>
-      <ImageIcon src={icons['clear']} size="rg" />
+      <ImageIcon src={icons[weather?.condition || 'offline']} size="rg" />
       <Text size="md" color={UIConfig.theme_color} weight="lg">
-        {data?.weather.temp_c || 0}°C
+        {weather?.temp_c || 0}°C
       </Text>
     </>
   );
