@@ -33264,12 +33264,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _utils_importAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/importAll */ "./src/utils/importAll.js");
-/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/localStorage */ "./src/utils/localStorage.js");
-/* harmony import */ var _UI_ImageIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../UI/ImageIcon */ "./src/components/UI/ImageIcon.jsx");
-/* harmony import */ var _UI_Text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../UI/Text */ "./src/components/UI/Text.jsx");
-/* harmony import */ var _config_UI_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../config/UI.config */ "./src/config/UI.config.js");
-/* harmony import */ var _config_UI_config__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_config_UI_config__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hooks/useFetch */ "./src/hooks/useFetch.js");
+/* harmony import */ var _config_UI_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/UI.config */ "./src/config/UI.config.js");
+/* harmony import */ var _config_UI_config__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_config_UI_config__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../hooks/useFetch */ "./src/hooks/useFetch.js");
+/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/localStorage */ "./src/utils/localStorage.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _UI_ImageIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../UI/ImageIcon */ "./src/components/UI/ImageIcon.jsx");
+/* harmony import */ var _UI_Text__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../UI/Text */ "./src/components/UI/Text.jsx");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -33287,39 +33288,35 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
+
 const icons = (0,_utils_importAll__WEBPACK_IMPORTED_MODULE_1__["default"])(__webpack_require__("./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$"));
 
 const Weather = () => {
-  const initWeather = _utils_localStorage__WEBPACK_IMPORTED_MODULE_2__.getItem('weather');
+  const initWeather = _utils_localStorage__WEBPACK_IMPORTED_MODULE_4__.getItem('weather');
   const {
     data,
     error,
     loaded
-  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_6__["default"])('/weather', {
+  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_3__["default"])('/weather', {
     weather: initWeather
   });
-  const weather = data.weather || {};
+  const weather = data?.weather || {};
 
   if (loaded) {
-    _utils_localStorage__WEBPACK_IMPORTED_MODULE_2__.setItem('weather', weather);
+    _utils_localStorage__WEBPACK_IMPORTED_MODULE_4__.setItem('weather', weather);
   }
 
-  console.log({
-    data,
-    error,
-    loaded
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    src: icons[weather?.condition || 'offline'],
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    src: icons[weather?.condition || _utils_util__WEBPACK_IMPORTED_MODULE_5__["default"].getTimeStatus()],
     size: "rg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_7__["default"], {
     size: "md",
-    color: (_config_UI_config__WEBPACK_IMPORTED_MODULE_5___default().theme_color),
+    color: (_config_UI_config__WEBPACK_IMPORTED_MODULE_2___default().theme_color),
     weight: "lg"
   }, weather?.temp_c || 0, "\xB0C"));
 };
 
-__signature__(Weather, "useFetch{{ data, error, loaded }}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_6__["default"]]);
+__signature__(Weather, "useFetch{{ data, error, loaded }}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_3__["default"]]);
 
 const _default = Weather;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
@@ -33435,7 +33432,8 @@ const useFetch = (url, initData, headers) => {
         setError(data.message);
       }
     } catch (err) {
-      setLoaded(false);
+      setLoaded(true);
+      setData(null);
       const {
         response,
         message
@@ -33710,8 +33708,17 @@ const getStatusByCode = code => {
   return status;
 };
 
+const getTimeStatus = () => {
+  const now = new Date();
+  const hour = now.getHours();
+  let status = '';
+  if (hour >= 7 && hour <= 12) status = 'morning';else if (hour >= 13 && hour <= 15) status = 'noon';else if (hour >= 16 && hour <= 18) status = 'afternoon';else status = 'night';
+  return status;
+};
+
 const _default = {
-  getStatusByCode
+  getStatusByCode,
+  getTimeStatus
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
 ;
@@ -33724,6 +33731,7 @@ const _default = {
   }
 
   reactHotLoader.register(getStatusByCode, "getStatusByCode", "F:\\Coding\\Projects\\ProTab\\src\\utils\\util.js");
+  reactHotLoader.register(getTimeStatus, "getTimeStatus", "F:\\Coding\\Projects\\ProTab\\src\\utils\\util.js");
   reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\utils\\util.js");
 })();
 
@@ -36542,6 +36550,7 @@ module.exports.formatError = function (err) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./afternoon.png": "./src/assets/icons/weather/afternoon.png",
 	"./cloudy.png": "./src/assets/icons/weather/cloudy.png",
 	"./morning.png": "./src/assets/icons/weather/morning.png",
 	"./night.png": "./src/assets/icons/weather/night.png",
@@ -36572,6 +36581,17 @@ webpackContext.id = "./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$";
 
 /***/ }),
 
+/***/ "./src/assets/icons/weather/afternoon.png":
+/*!************************************************!*\
+  !*** ./src/assets/icons/weather/afternoon.png ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "843cc3e5a7073af79f1d.png";
+
+/***/ }),
+
 /***/ "./src/assets/icons/weather/cloudy.png":
 /*!*********************************************!*\
   !*** ./src/assets/icons/weather/cloudy.png ***!
@@ -36590,7 +36610,7 @@ module.exports = __webpack_require__.p + "969a0c89c9f46a0e0c04.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "f794832ad72b90c61eb7.png";
+module.exports = __webpack_require__.p + "580c9de7998005d4b247.png";
 
 /***/ }),
 
@@ -36601,7 +36621,7 @@ module.exports = __webpack_require__.p + "f794832ad72b90c61eb7.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "a19e3b93b71ed46b3178.png";
+module.exports = __webpack_require__.p + "1bfbd92981bc5bc48482.png";
 
 /***/ }),
 
@@ -36612,7 +36632,7 @@ module.exports = __webpack_require__.p + "a19e3b93b71ed46b3178.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "c0c178c7582696d541cc.png";
+module.exports = __webpack_require__.p + "542ab62986dcc5a287d2.png";
 
 /***/ }),
 
@@ -40542,7 +40562,7 @@ const toFiniteNumber = (value, defaultValue) => {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("ee241c22dc5eed9db423")
+/******/ 		__webpack_require__.h = () => ("422aca1233c7204445f9")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/harmony module decorator */

@@ -22,7 +22,8 @@ const useFetch = (url, initData, headers) => {
         setError(data.message);
       }
     } catch (err) {
-      setLoaded(false);
+      setLoaded(true);
+      setData(null);
       const { response, message } = err;
       setError(response?.data.message || message);
     }

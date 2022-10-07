@@ -1,12 +1,12 @@
 import React from 'react';
 import importAll from '../../utils/importAll';
 
-import * as store from '../../utils/localStorage';
-import ImageIcon from '../UI/ImageIcon';
-import Text from '../UI/Text';
-
 import UIConfig from '../../config/UI.config';
 import useFetch from '../../hooks/useFetch';
+import * as store from '../../utils/localStorage';
+import util from '../../utils/util';
+import ImageIcon from '../UI/ImageIcon';
+import Text from '../UI/Text';
 const icons = importAll(
   require.context('../../assets/icons/weather', false, /\.(png|jpe?g|svg)$/)
 );
@@ -17,15 +17,16 @@ const Weather = () => {
   const { data, error, loaded } = useFetch('/weather', {
     weather: initWeather,
   });
-  const weather = data.weather || {};
-
+  const weather = data?.weather || {};
   if (loaded) {
     store.setItem('weather', weather);
   }
-  console.log({ data, error, loaded });
   return (
     <>
-      <ImageIcon src={icons[weather?.condition || 'offline']} size="rg" />
+      <ImageIcon
+        src={icons[weather?.condition || util.getTimeStatus()]}
+        size="rg"
+      />
       <Text size="md" color={UIConfig.theme_color} weight="lg">
         {weather?.temp_c || 0}°C
       </Text>
