@@ -1,13 +1,13 @@
 import React from 'react';
-import importAll from '../../utils/importAll';
+import importAll from '../../../utils/importAll';
 
-import useFetch from '../../hooks/useFetch';
-import * as store from '../../utils/localStorage';
-import util from '../../utils/util';
-import ImageIcon from '../UI/ImageIcon';
-import Text from '../UI/Text';
+import ImageIcon from '../../../components/UI/ImageIcon';
+import Text from '../../../components/UI/Text';
+import useFetch from '../../../hooks/useFetch';
+import * as store from '../../../utils/localStorage';
+import util from '../../../utils/util';
 const icons = importAll(
-  require.context('../../assets/icons/weather', false, /\.(png|jpe?g|svg)$/)
+  require.context('../../../assets/icons/weather', false, /\.(png|jpe?g|svg)$/)
 );
 
 const Weather = () => {

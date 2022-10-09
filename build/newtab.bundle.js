@@ -33163,189 +33163,6 @@ const _default = Text;
 
 /***/ }),
 
-/***/ "./src/components/shared/DateTime.jsx":
-/*!********************************************!*\
-  !*** ./src/components/shared/DateTime.jsx ***!
-  \********************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _UI_Text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../UI/Text */ "./src/components/UI/Text.jsx");
-/* module decorator */ module = __webpack_require__.hmd(module);
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-
-
-
-const formatDate = date => {
-  return Intl.DateTimeFormat('en-US', {
-    hourCycle: 'h24'
-  }).format(date);
-};
-
-const formatTime = time => {
-  return time.toLocaleTimeString('en-US', {
-    hourCycle: 'h24'
-  });
-};
-
-const init = {
-  time: formatTime(new Date()),
-  date: formatDate(new Date())
-};
-
-const DateTime = () => {
-  const [time, setTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(init.time);
-  const [date, setDate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(init.date);
-
-  const updateDateTime = () => {
-    const now = new Date();
-    setTime(formatTime(now));
-    setDate(formatDate(now));
-  };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    setInterval(updateDateTime, 1000);
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    size: "md",
-    mode: "dark"
-  }, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    size: "lg",
-    mode: "dark"
-  }, time));
-};
-
-__signature__(DateTime, "useState{[time, setTime](init.time)}\nuseState{[date, setDate](init.date)}\nuseEffect{}");
-
-const _default = DateTime;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(formatDate, "formatDate", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\DateTime.jsx");
-  reactHotLoader.register(formatTime, "formatTime", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\DateTime.jsx");
-  reactHotLoader.register(init, "init", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\DateTime.jsx");
-  reactHotLoader.register(DateTime, "DateTime", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\DateTime.jsx");
-  reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\DateTime.jsx");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-
-/***/ }),
-
-/***/ "./src/components/shared/Weather.jsx":
-/*!*******************************************!*\
-  !*** ./src/components/shared/Weather.jsx ***!
-  \*******************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _utils_importAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/importAll */ "./src/utils/importAll.js");
-/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/useFetch */ "./src/hooks/useFetch.js");
-/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/localStorage */ "./src/utils/localStorage.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _UI_ImageIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../UI/ImageIcon */ "./src/components/UI/ImageIcon.jsx");
-/* harmony import */ var _UI_Text__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../UI/Text */ "./src/components/UI/Text.jsx");
-/* module decorator */ module = __webpack_require__.hmd(module);
-(function () {
-  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
-  enterModule && enterModule(module);
-})();
-
-var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
-  return a;
-};
-
-
-
-
-
-
-
-
-const icons = (0,_utils_importAll__WEBPACK_IMPORTED_MODULE_1__["default"])(__webpack_require__("./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$"));
-
-const Weather = () => {
-  const initWeather = _utils_localStorage__WEBPACK_IMPORTED_MODULE_3__.getItem('weather');
-  const {
-    data,
-    error,
-    loaded
-  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__["default"])('/weather', {
-    weather: initWeather
-  });
-  const weather = data?.weather || {};
-
-  if (loaded) {
-    _utils_localStorage__WEBPACK_IMPORTED_MODULE_3__.setItem('weather', weather);
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    src: icons[weather?.condition || _utils_util__WEBPACK_IMPORTED_MODULE_4__["default"].getTimeStatus()],
-    size: "rg"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UI_Text__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    size: "md",
-    mode: "theme",
-    weight: "lg"
-  }, weather?.temp_c || '--', "\xB0C"));
-};
-
-__signature__(Weather, "useFetch{{ data, error, loaded }}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_2__["default"]]);
-
-const _default = Weather;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
-;
-
-(function () {
-  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(icons, "icons", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\Weather.jsx");
-  reactHotLoader.register(Weather, "Weather", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\Weather.jsx");
-  reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\components\\shared\\Weather.jsx");
-})();
-
-;
-
-(function () {
-  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
-  leaveModule && leaveModule(module);
-})();
-
-/***/ }),
-
 /***/ "./src/config/UI.config.js":
 /*!*********************************!*\
   !*** ./src/config/UI.config.js ***!
@@ -33493,8 +33310,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _components_shared_DateTime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/shared/DateTime */ "./src/components/shared/DateTime.jsx");
-/* harmony import */ var _components_shared_Weather__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/shared/Weather */ "./src/components/shared/Weather.jsx");
+/* harmony import */ var _components_DateTime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/DateTime */ "./src/pages/Newtab/components/DateTime.jsx");
+/* harmony import */ var _components_Weather__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Weather */ "./src/pages/Newtab/components/Weather.jsx");
 /* harmony import */ var _Newtab_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Newtab.scss */ "./src/pages/Newtab/Newtab.scss");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
@@ -33512,7 +33329,7 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 const Newtab = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_shared_Weather__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_shared_DateTime__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Weather__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DateTime__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 const _default = Newtab;
@@ -33528,6 +33345,189 @@ const _default = Newtab;
 
   reactHotLoader.register(Newtab, "Newtab", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\Newtab.jsx");
   reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\Newtab.jsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+
+/***/ }),
+
+/***/ "./src/pages/Newtab/components/DateTime.jsx":
+/*!**************************************************!*\
+  !*** ./src/pages/Newtab/components/DateTime.jsx ***!
+  \**************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _components_UI_Text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components/UI/Text */ "./src/components/UI/Text.jsx");
+/* module decorator */ module = __webpack_require__.hmd(module);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+
+
+
+const formatDate = date => {
+  return Intl.DateTimeFormat('en-US', {
+    hourCycle: 'h24'
+  }).format(date);
+};
+
+const formatTime = time => {
+  return time.toLocaleTimeString('en-US', {
+    hourCycle: 'h24'
+  });
+};
+
+const init = {
+  time: formatTime(new Date()),
+  date: formatDate(new Date())
+};
+
+const DateTime = () => {
+  const [time, setTime] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(init.time);
+  const [date, setDate] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(init.date);
+
+  const updateDateTime = () => {
+    const now = new Date();
+    setTime(formatTime(now));
+    setDate(formatDate(now));
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setInterval(updateDateTime, 1000);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_UI_Text__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    size: "md",
+    mode: "dark"
+  }, date), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_UI_Text__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    size: "lg",
+    mode: "dark"
+  }, time));
+};
+
+__signature__(DateTime, "useState{[time, setTime](init.time)}\nuseState{[date, setDate](init.date)}\nuseEffect{}");
+
+const _default = DateTime;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(formatDate, "formatDate", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
+  reactHotLoader.register(formatTime, "formatTime", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
+  reactHotLoader.register(init, "init", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
+  reactHotLoader.register(DateTime, "DateTime", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
+  reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+
+/***/ }),
+
+/***/ "./src/pages/Newtab/components/Weather.jsx":
+/*!*************************************************!*\
+  !*** ./src/pages/Newtab/components/Weather.jsx ***!
+  \*************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _utils_importAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/importAll */ "./src/utils/importAll.js");
+/* harmony import */ var _components_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/UI/ImageIcon */ "./src/components/UI/ImageIcon.jsx");
+/* harmony import */ var _components_UI_Text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/UI/Text */ "./src/components/UI/Text.jsx");
+/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../hooks/useFetch */ "./src/hooks/useFetch.js");
+/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/localStorage */ "./src/utils/localStorage.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* module decorator */ module = __webpack_require__.hmd(module);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+
+
+
+
+
+
+
+const icons = (0,_utils_importAll__WEBPACK_IMPORTED_MODULE_1__["default"])(__webpack_require__("./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$"));
+
+const Weather = () => {
+  const initWeather = _utils_localStorage__WEBPACK_IMPORTED_MODULE_5__.getItem('weather');
+  const {
+    data,
+    error,
+    loaded
+  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_4__["default"])('/weather', {
+    weather: initWeather
+  });
+  const weather = data?.weather || {};
+
+  if (loaded) {
+    _utils_localStorage__WEBPACK_IMPORTED_MODULE_5__.setItem('weather', weather);
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    src: icons[weather?.condition || _utils_util__WEBPACK_IMPORTED_MODULE_6__["default"].getTimeStatus()],
+    size: "rg"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_UI_Text__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    size: "md",
+    mode: "theme",
+    weight: "lg"
+  }, weather?.temp_c || '--', "\xB0C"));
+};
+
+__signature__(Weather, "useFetch{{ data, error, loaded }}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_4__["default"]]);
+
+const _default = Weather;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(icons, "icons", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\Weather.jsx");
+  reactHotLoader.register(Weather, "Weather", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\Weather.jsx");
+  reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\Weather.jsx");
 })();
 
 ;
@@ -40565,7 +40565,7 @@ const toFiniteNumber = (value, defaultValue) => {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("38e26726bcb46561249b")
+/******/ 		__webpack_require__.h = () => ("e18660108626fe7ac531")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/harmony module decorator */

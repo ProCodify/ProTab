@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Text from '../UI/Text';
+import Text from '../../../components/UI/Text';
 
 const formatDate = (date) => {
   return Intl.DateTimeFormat('en-US', { hourCycle: 'h24' }).format(date);

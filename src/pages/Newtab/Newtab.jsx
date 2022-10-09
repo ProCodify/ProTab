@@ -1,6 +1,6 @@
 import React from 'react';
-import DateTime from '../../components/shared/DateTime';
-import Weather from '../../components/shared/Weather';
+import DateTime from './components/DateTime';
+import Weather from './components/Weather';
 import './Newtab.scss';
 const Newtab = () => {
   return (
