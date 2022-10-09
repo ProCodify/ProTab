@@ -23,8 +23,12 @@ const DateTime = () => {
     setDate(formatDate(now));
   };
 
+  let tick = null;
   useEffect(() => {
-    setInterval(updateDateTime, 1000);
+    tick = setInterval(updateDateTime, 1000);
+    return () => {
+      clearInterval(tick);
+    };
   }, []);
   return (
     <div>

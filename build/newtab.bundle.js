@@ -33409,8 +33409,12 @@ const DateTime = () => {
     setDate(formatDate(now));
   };
 
+  let tick = null;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    setInterval(updateDateTime, 1000);
+    tick = setInterval(updateDateTime, 1000);
+    return () => {
+      clearInterval(tick);
+    };
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_UI_Text__WEBPACK_IMPORTED_MODULE_1__["default"], {
     size: "md",
@@ -40565,7 +40569,7 @@ const toFiniteNumber = (value, defaultValue) => {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("e18660108626fe7ac531")
+/******/ 		__webpack_require__.h = () => ("ccd839314744816e0170")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/harmony module decorator */
