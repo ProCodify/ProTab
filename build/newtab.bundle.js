@@ -33227,8 +33227,8 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
-const useFetch = (url, initData, headers) => {
-  const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initData);
+const useFetch = (url, headers) => {
+  const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [error, setError] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [loaded, setLoaded] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
@@ -33272,7 +33272,7 @@ const useFetch = (url, initData, headers) => {
   };
 };
 
-__signature__(useFetch, "useState{[data, setData](initData)}\nuseState{[error, setError](null)}\nuseState{[loaded, setLoaded](false)}\nuseEffect{}");
+__signature__(useFetch, "useState{[data, setData](null)}\nuseState{[error, setError](null)}\nuseState{[loaded, setLoaded](false)}\nuseEffect{}");
 
 const _default = useFetch;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
@@ -33310,9 +33310,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _components_DateTime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/DateTime */ "./src/pages/Newtab/components/DateTime.jsx");
-/* harmony import */ var _components_Weather__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Weather */ "./src/pages/Newtab/components/Weather.jsx");
-/* harmony import */ var _Newtab_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Newtab.scss */ "./src/pages/Newtab/Newtab.scss");
+/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hooks/useFetch */ "./src/hooks/useFetch.js");
+/* harmony import */ var _utils_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/store */ "./src/utils/store.js");
+/* harmony import */ var _components_DateTime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/DateTime */ "./src/pages/Newtab/components/DateTime.jsx");
+/* harmony import */ var _components_Weather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Weather */ "./src/pages/Newtab/components/Weather.jsx");
+/* harmony import */ var _Newtab_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Newtab.scss */ "./src/pages/Newtab/Newtab.scss");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -33328,11 +33330,28 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
-const Newtab = () => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Weather__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DateTime__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+
+const initWeather = _utils_store__WEBPACK_IMPORTED_MODULE_2__["default"].getItem('weather')?.weather;
+
+const NewTab = () => {
+  const [weather, setWeather] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initWeather);
+  const {
+    data: weatherData,
+    loaded: isWeatherLoaded
+  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_1__["default"])('/weather');
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isWeatherLoaded && weatherData) {
+      setWeather(weatherData.data);
+    }
+  }, [weatherData]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Weather__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    weather: weather
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DateTime__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
-const _default = Newtab;
+__signature__(NewTab, "useState{[weather, setWeather](initWeather)}\nuseFetch{{ data: weatherData, loaded: isWeatherLoaded }}\nuseEffect{}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_1__["default"]]);
+
+const _default = NewTab;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
 ;
 
@@ -33343,7 +33362,8 @@ const _default = Newtab;
     return;
   }
 
-  reactHotLoader.register(Newtab, "Newtab", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\Newtab.jsx");
+  reactHotLoader.register(initWeather, "initWeather", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\Newtab.jsx");
+  reactHotLoader.register(NewTab, "NewTab", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\Newtab.jsx");
   reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\Newtab.jsx");
 })();
 
@@ -33467,11 +33487,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _utils_importAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/importAll */ "./src/utils/importAll.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _components_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/UI/ImageIcon */ "./src/components/UI/ImageIcon.jsx");
 /* harmony import */ var _components_UI_Text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/UI/Text */ "./src/components/UI/Text.jsx");
-/* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../hooks/useFetch */ "./src/hooks/useFetch.js");
-/* harmony import */ var _utils_localStorage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/localStorage */ "./src/utils/localStorage.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -33488,26 +33508,13 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
-
 const icons = (0,_utils_importAll__WEBPACK_IMPORTED_MODULE_1__["default"])(__webpack_require__("./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$"));
 
-const Weather = () => {
-  const initWeather = _utils_localStorage__WEBPACK_IMPORTED_MODULE_5__.getItem('weather');
-  const {
-    data,
-    error,
-    loaded
-  } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_4__["default"])('/weather', {
-    weather: initWeather
-  });
-  const weather = data?.weather || {};
-
-  if (loaded) {
-    _utils_localStorage__WEBPACK_IMPORTED_MODULE_5__.setItem('weather', weather);
-  }
-
+const Weather = ({
+  weather
+}) => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_UI_ImageIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    src: icons[weather?.condition || _utils_util__WEBPACK_IMPORTED_MODULE_6__["default"].getTimeStatus()],
+    src: icons[weather?.condition || _utils_util__WEBPACK_IMPORTED_MODULE_4__["default"].getTimeStatus()],
     size: "rg"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_UI_Text__WEBPACK_IMPORTED_MODULE_3__["default"], {
     size: "md",
@@ -33516,8 +33523,12 @@ const Weather = () => {
   }, weather?.temp_c || '--', "\xB0C"));
 };
 
-__signature__(Weather, "useFetch{{ data, error, loaded }}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_4__["default"]]);
-
+Weather.propTypes = {
+  weather: prop_types__WEBPACK_IMPORTED_MODULE_5___default().shape({
+    condition: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().string.isRequired),
+    temp_c: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().number.isRequired)
+  })
+};
 const _default = Weather;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
 ;
@@ -33621,19 +33632,16 @@ const _default = importAll;
 
 /***/ }),
 
-/***/ "./src/utils/localStorage.js":
-/*!***********************************!*\
-  !*** ./src/utils/localStorage.js ***!
-  \***********************************/
+/***/ "./src/utils/store.js":
+/*!****************************!*\
+  !*** ./src/utils/store.js ***!
+  \****************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "clearItem": () => (/* binding */ clearItem),
-/* harmony export */   "getItem": () => (/* binding */ getItem),
-/* harmony export */   "hasItem": () => (/* binding */ hasItem),
-/* harmony export */   "setItem": () => (/* binding */ setItem)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
@@ -33646,7 +33654,11 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 };
 
 const getItem = key => {
-  return JSON.parse(localStorage.getItem(key));
+  try {
+    return JSON.parse(localStorage.getItem(key));
+  } catch (error) {
+    return null;
+  }
 };
 
 const setItem = (key, value) => {
@@ -33661,7 +33673,13 @@ const hasItem = key => {
   return Object.keys(localStorage).includes(key);
 };
 
-
+const _default = {
+  getItem,
+  setItem,
+  clearItem,
+  hasItem
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
 ;
 
 (function () {
@@ -33671,10 +33689,11 @@ const hasItem = key => {
     return;
   }
 
-  reactHotLoader.register(getItem, "getItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\localStorage.js");
-  reactHotLoader.register(setItem, "setItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\localStorage.js");
-  reactHotLoader.register(clearItem, "clearItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\localStorage.js");
-  reactHotLoader.register(hasItem, "hasItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\localStorage.js");
+  reactHotLoader.register(getItem, "getItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\store.js");
+  reactHotLoader.register(setItem, "setItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\store.js");
+  reactHotLoader.register(clearItem, "clearItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\store.js");
+  reactHotLoader.register(hasItem, "hasItem", "F:\\Coding\\Projects\\ProTab\\src\\utils\\store.js");
+  reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\utils\\store.js");
 })();
 
 ;
@@ -40569,7 +40588,7 @@ const toFiniteNumber = (value, defaultValue) => {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("ccd839314744816e0170")
+/******/ 		__webpack_require__.h = () => ("40964833be1acf6e5416")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/harmony module decorator */

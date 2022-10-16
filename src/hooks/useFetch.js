@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from '../api/axios';
 import util from '../utils/util';
-const useFetch = (url, initData, headers) => {
-  const [data, setData] = useState(initData);
+const useFetch = (url, headers) => {
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const fetchData = async () => {
