@@ -24,8 +24,8 @@ const Weather = ({ weather }) => {
 
 Weather.propTypes = {
   weather: PropTypes.shape({
-    condition: PropTypes.string.isRequired,
-    temp_c: PropTypes.number.isRequired,
+    condition: PropTypes.string,
+    temp_c: PropTypes.number,
   }),
 };
 export default Weather;
