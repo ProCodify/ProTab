@@ -4,16 +4,15 @@ import util from '../utils/util';
 const useFetch = (url, headers) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [loaded, setLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const fetchData = async () => {
     try {
-      setLoaded(false);
+      setIsLoaded(false);
       const { data, status } = await axios.get(url, {
         headers: {
           ...headers,
         },
       });
-      setLoaded(true);
       if (util.getStatusByCode(status) === 'success') {
         setError(null);
         setData(data);
@@ -21,11 +20,12 @@ const useFetch = (url, headers) => {
         setData(null);
         setError(data.message);
       }
+      setIsLoaded(true);
     } catch (err) {
-      setLoaded(true);
       setData(null);
       const { response, message } = err;
       setError(response?.data.message || message);
+      setIsLoaded(true);
     }
   };
 
@@ -33,7 +33,7 @@ const useFetch = (url, headers) => {
     fetchData();
   }, [url, headers]);
 
-  return { data, error, loaded };
+  return { data, error, isLoaded };
 };
 
 export default useFetch;
