@@ -7,7 +7,7 @@ const getStatusByCode = (code) => {
   return status;
 };
 
-const getTimeStatus = () => {
+export const getTimeStatus = () => {
   const now = new Date();
   const hour = now.getHours();
   let status = '';

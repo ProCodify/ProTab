@@ -27332,7 +27332,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background-color: #181818; }\n", "",{"version":3,"sources":["webpack://./src/pages/Newtab/Newtab.scss"],"names":[],"mappings":"AACA;EACE,yBAAyB,EAAA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap');\r\nbody {\r\n  background-color: #181818;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n  background-color: #181818;\n  height: 100vh;\n  width: 100vw;\n  background-position: center center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-attachment: fixed;\n  backdrop-filter: blur(2px); }\n", "",{"version":3,"sources":["webpack://./src/pages/Newtab/Newtab.scss"],"names":[],"mappings":"AACA;EACE,yBAAyB;EACzB,aAAa;EACb,YAAY;EACZ,kCAAkC;EAClC,4BAA4B;EAC5B,sBAAsB;EACtB,4BAA4B;EAC5B,0BAA0B,EAAA","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap');\r\nbody {\r\n  background-color: #181818;\r\n  height: 100vh;\r\n  width: 100vw;\r\n  background-position: center center;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  background-attachment: fixed;\r\n  backdrop-filter: blur(2px);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -33299,6 +33299,77 @@ const _default = useFetch;
 
 /***/ }),
 
+/***/ "./src/hooks/useNetwork.js":
+/*!*********************************!*\
+  !*** ./src/hooks/useNetwork.js ***!
+  \*********************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* module decorator */ module = __webpack_require__.hmd(module);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+
+
+const useNetwork = () => {
+  if (!window) return null;
+  const [hasInternet, setHasInternet] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(window.navigator.onLine);
+
+  const updateInternetStatus = () => {
+    setHasInternet(window.navigator.onLine);
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    window.addEventListener('offline', updateInternetStatus);
+    window.addEventListener('online', updateInternetStatus);
+    return () => {
+      window.removeEventListener('offline', updateInternetStatus);
+      window.removeEventListener('online', updateInternetStatus);
+    };
+  }, []);
+  return {
+    hasInternet
+  };
+};
+
+__signature__(useNetwork, "useState{[hasInternet, setHasInternet](window.navigator.onLine)}\nuseEffect{}");
+
+const _default = useNetwork;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(useNetwork, "useNetwork", "F:\\Coding\\Projects\\ProTab\\src\\hooks\\useNetwork.js");
+  reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\hooks\\useNetwork.js");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+
+/***/ }),
+
 /***/ "./src/pages/Newtab/Newtab.jsx":
 /*!*************************************!*\
   !*** ./src/pages/Newtab/Newtab.jsx ***!
@@ -33312,10 +33383,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _hooks_useFetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../hooks/useFetch */ "./src/hooks/useFetch.js");
-/* harmony import */ var _utils_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/store */ "./src/utils/store.js");
-/* harmony import */ var _components_DateTime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/DateTime */ "./src/pages/Newtab/components/DateTime.jsx");
-/* harmony import */ var _components_Weather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Weather */ "./src/pages/Newtab/components/Weather.jsx");
-/* harmony import */ var _Newtab_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Newtab.scss */ "./src/pages/Newtab/Newtab.scss");
+/* harmony import */ var _hooks_useNetwork__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../hooks/useNetwork */ "./src/hooks/useNetwork.js");
+/* harmony import */ var _utils_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/store */ "./src/utils/store.js");
+/* harmony import */ var _components_DateTime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/DateTime */ "./src/pages/Newtab/components/DateTime.jsx");
+/* harmony import */ var _components_DynamicBackground__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/DynamicBackground */ "./src/pages/Newtab/components/DynamicBackground.jsx");
+/* harmony import */ var _components_Weather__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Weather */ "./src/pages/Newtab/components/Weather.jsx");
+/* harmony import */ var _Newtab_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Newtab.scss */ "./src/pages/Newtab/Newtab.scss");
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
   var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
@@ -33332,7 +33405,9 @@ var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoader
 
 
 
-const INIT_WEATHER = _utils_store__WEBPACK_IMPORTED_MODULE_2__["default"].getItem('weather');
+
+
+const INIT_WEATHER = _utils_store__WEBPACK_IMPORTED_MODULE_3__["default"].getItem('weather');
 
 const NewTab = () => {
   const [weather, setWeather] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(INIT_WEATHER);
@@ -33340,18 +33415,26 @@ const NewTab = () => {
     data: weatherData,
     isLoaded
   } = (0,_hooks_useFetch__WEBPACK_IMPORTED_MODULE_1__["default"])('/weather');
+  const {
+    hasInternet
+  } = (0,_hooks_useNetwork__WEBPACK_IMPORTED_MODULE_2__["default"])();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (isLoaded && weatherData.data) {
+    if (isLoaded && weatherData?.data) {
       setWeather(weatherData.data);
-      _utils_store__WEBPACK_IMPORTED_MODULE_2__["default"].setItem('weather', weatherData.data);
     }
+
+    _utils_store__WEBPACK_IMPORTED_MODULE_3__["default"].setItem('weather', weatherData?.data);
   }, [isLoaded]);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Weather__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, !hasInternet ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DynamicBackground__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    weatherText: "offline"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DynamicBackground__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    weatherText: weather?.condition
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Weather__WEBPACK_IMPORTED_MODULE_6__["default"], {
     weather: weather
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DateTime__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DateTime__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
 
-__signature__(NewTab, "useState{[weather, setWeather](INIT_WEATHER)}\nuseFetch{{ data: weatherData, isLoaded }}\nuseEffect{}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_1__["default"]]);
+__signature__(NewTab, "useState{[weather, setWeather](INIT_WEATHER)}\nuseFetch{{ data: weatherData, isLoaded }}\nuseNetwork{{ hasInternet }}\nuseEffect{}", () => [_hooks_useFetch__WEBPACK_IMPORTED_MODULE_1__["default"], _hooks_useNetwork__WEBPACK_IMPORTED_MODULE_2__["default"]]);
 
 const _default = NewTab;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
@@ -33465,6 +33548,82 @@ const _default = DateTime;
   reactHotLoader.register(init, "init", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
   reactHotLoader.register(DateTime, "DateTime", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
   reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DateTime.jsx");
+})();
+
+;
+
+(function () {
+  var leaveModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.leaveModule : undefined;
+  leaveModule && leaveModule(module);
+})();
+
+/***/ }),
+
+/***/ "./src/pages/Newtab/components/DynamicBackground.jsx":
+/*!***********************************************************!*\
+  !*** ./src/pages/Newtab/components/DynamicBackground.jsx ***!
+  \***********************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _utils_importAll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/importAll */ "./src/utils/importAll.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* module decorator */ module = __webpack_require__.hmd(module);
+(function () {
+  var enterModule = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.enterModule : undefined;
+  enterModule && enterModule(module);
+})();
+
+var __signature__ = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default.signature : function (a) {
+  return a;
+};
+
+
+
+
+
+const backgroundImages = (0,_utils_importAll__WEBPACK_IMPORTED_MODULE_1__["default"])(__webpack_require__("./src/assets/background sync \\.(png%7Cjpe?g%7Csvg)$"));
+
+const DynamicBackground = ({
+  weatherText
+}) => {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    let imageName;
+    if (weatherText === 'offline') imageName = 'offline';else {
+      imageName = `${(0,_utils_util__WEBPACK_IMPORTED_MODULE_2__.getTimeStatus)()}`;
+      if (weatherText) imageName += `-${weatherText}`;
+    }
+    document.body.style.backgroundImage = `url(${backgroundImages[imageName]})`;
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null);
+};
+
+__signature__(DynamicBackground, "useEffect{}");
+
+DynamicBackground.propTypes = {
+  weatherText: (prop_types__WEBPACK_IMPORTED_MODULE_3___default().string.isRequired)
+};
+const _default = DynamicBackground;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_default);
+;
+
+(function () {
+  var reactHotLoader = typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal.default : undefined;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(backgroundImages, "backgroundImages", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DynamicBackground.jsx");
+  reactHotLoader.register(DynamicBackground, "DynamicBackground", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DynamicBackground.jsx");
+  reactHotLoader.register(_default, "default", "F:\\Coding\\Projects\\ProTab\\src\\pages\\Newtab\\components\\DynamicBackground.jsx");
 })();
 
 ;
@@ -33716,7 +33875,8 @@ const _default = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   "getTimeStatus": () => (/* binding */ getTimeStatus)
 /* harmony export */ });
 /* module decorator */ module = __webpack_require__.hmd(module);
 (function () {
@@ -33743,7 +33903,6 @@ const getTimeStatus = () => {
   if (hour >= 7 && hour <= 12) status = 'morning';else if (hour >= 13 && hour <= 15) status = 'noon';else if (hour >= 16 && hour <= 18) status = 'afternoon';else status = 'night';
   return status;
 };
-
 const _default = {
   getStatusByCode,
   getTimeStatus
@@ -36571,6 +36730,54 @@ module.exports.formatError = function (err) {
 
 /***/ }),
 
+/***/ "./src/assets/background sync \\.(png%7Cjpe?g%7Csvg)$":
+/*!*************************************************************************!*\
+  !*** ./src/assets/background/ sync nonrecursive \.(png%7Cjpe?g%7Csvg)$ ***!
+  \*************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./Morning-sunny.jpg": "./src/assets/background/Morning-sunny.jpg",
+	"./afternoon-cloudy.jpg": "./src/assets/background/afternoon-cloudy.jpg",
+	"./afternoon-rain.jpg": "./src/assets/background/afternoon-rain.jpg",
+	"./afternoon-sunny.jpg": "./src/assets/background/afternoon-sunny.jpg",
+	"./afternoon.jpg": "./src/assets/background/afternoon.jpg",
+	"./evening-cloudy.jpg": "./src/assets/background/evening-cloudy.jpg",
+	"./evening-rain.jpg": "./src/assets/background/evening-rain.jpg",
+	"./evening-sunny.jpg": "./src/assets/background/evening-sunny.jpg",
+	"./evening.jpg": "./src/assets/background/evening.jpg",
+	"./morning-cloudy.jpg": "./src/assets/background/morning-cloudy.jpg",
+	"./morning-rain.jpg": "./src/assets/background/morning-rain.jpg",
+	"./morning.jpg": "./src/assets/background/morning.jpg",
+	"./night-cloudy.jpg": "./src/assets/background/night-cloudy.jpg",
+	"./night-rain.jpg": "./src/assets/background/night-rain.jpg",
+	"./night-sunny.jpg": "./src/assets/background/night-sunny.jpg",
+	"./night.jpg": "./src/assets/background/night.jpg",
+	"./offline.jpg": "./src/assets/background/offline.jpg"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./src/assets/background sync \\.(png%7Cjpe?g%7Csvg)$";
+
+/***/ }),
+
 /***/ "./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$":
 /*!****************************************************************************!*\
   !*** ./src/assets/icons/weather/ sync nonrecursive \.(png%7Cjpe?g%7Csvg)$ ***!
@@ -36606,6 +36813,193 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = "./src/assets/icons/weather sync \\.(png%7Cjpe?g%7Csvg)$";
+
+/***/ }),
+
+/***/ "./src/assets/background/Morning-sunny.jpg":
+/*!*************************************************!*\
+  !*** ./src/assets/background/Morning-sunny.jpg ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "c57f9190cb40a82d9c76.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/afternoon-cloudy.jpg":
+/*!****************************************************!*\
+  !*** ./src/assets/background/afternoon-cloudy.jpg ***!
+  \****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "627ace21526901d5a248.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/afternoon-rain.jpg":
+/*!**************************************************!*\
+  !*** ./src/assets/background/afternoon-rain.jpg ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "b665accae1fbf5ea7466.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/afternoon-sunny.jpg":
+/*!***************************************************!*\
+  !*** ./src/assets/background/afternoon-sunny.jpg ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "adcc572a1cc357f6e4cb.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/afternoon.jpg":
+/*!*********************************************!*\
+  !*** ./src/assets/background/afternoon.jpg ***!
+  \*********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "e86f6b961bedaab2c12b.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/evening-cloudy.jpg":
+/*!**************************************************!*\
+  !*** ./src/assets/background/evening-cloudy.jpg ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "4df5fcb3fff0f446b3fe.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/evening-rain.jpg":
+/*!************************************************!*\
+  !*** ./src/assets/background/evening-rain.jpg ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "461eb1cf9b2922d3e556.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/evening-sunny.jpg":
+/*!*************************************************!*\
+  !*** ./src/assets/background/evening-sunny.jpg ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "3b1d88593832d2b300cc.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/evening.jpg":
+/*!*******************************************!*\
+  !*** ./src/assets/background/evening.jpg ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "5f05187cb676a4ec429a.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/morning-cloudy.jpg":
+/*!**************************************************!*\
+  !*** ./src/assets/background/morning-cloudy.jpg ***!
+  \**************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "0b6a8836681d13de38fe.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/morning-rain.jpg":
+/*!************************************************!*\
+  !*** ./src/assets/background/morning-rain.jpg ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "461eb1cf9b2922d3e556.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/morning.jpg":
+/*!*******************************************!*\
+  !*** ./src/assets/background/morning.jpg ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "6d3310bea3fdfcc4df09.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/night-cloudy.jpg":
+/*!************************************************!*\
+  !*** ./src/assets/background/night-cloudy.jpg ***!
+  \************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "d84eeeb81070b14f197d.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/night-rain.jpg":
+/*!**********************************************!*\
+  !*** ./src/assets/background/night-rain.jpg ***!
+  \**********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "a1200815265bf6c91c0f.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/night-sunny.jpg":
+/*!***********************************************!*\
+  !*** ./src/assets/background/night-sunny.jpg ***!
+  \***********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "4cc30d66cc568144613c.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/night.jpg":
+/*!*****************************************!*\
+  !*** ./src/assets/background/night.jpg ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "535b8857b43cf834a3db.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/background/offline.jpg":
+/*!*******************************************!*\
+  !*** ./src/assets/background/offline.jpg ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "9537ac737925174c6b0b.jpg";
 
 /***/ }),
 
@@ -40590,7 +40984,7 @@ const toFiniteNumber = (value, defaultValue) => {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("0187047a14b72cbfcc37")
+/******/ 		__webpack_require__.h = () => ("0335c8e9e4b9fd059143")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/harmony module decorator */

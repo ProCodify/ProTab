@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useNetwork = () => {
   if (!window) return null;
-  const [isOnline, setNetwork] = useState(window.navigator.onLine);
-  const updateNetwork = () => {
-    setNetwork(window.navigator.onLine);
+  const [hasInternet, setHasInternet] = useState(window.navigator.onLine);
+  const updateInternetStatus = () => {
+    setHasInternet(window.navigator.onLine);
   };
   useEffect(() => {
-    window.addEventListener('offline', updateNetwork);
-    window.addEventListener('online', updateNetwork);
+    window.addEventListener('offline', updateInternetStatus);
+    window.addEventListener('online', updateInternetStatus);
     return () => {
-      window.removeEventListener('offline', updateNetwork);
-      window.removeEventListener('online', updateNetwork);
+      window.removeEventListener('offline', updateInternetStatus);
+      window.removeEventListener('online', updateInternetStatus);
     };
-  });
-  return isOnline;
+  }, []);
+  return { hasInternet };
 };
 
 export default useNetwork;
